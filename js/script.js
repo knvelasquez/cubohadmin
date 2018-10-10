@@ -29,11 +29,12 @@ $(function(){
 		$.ajax({
 			type: "POST",
 			url: $url_base("login/"),
-			//crossDomain: true,
+			crossDomain: true,
 			data:$setParam($(".form-horizontal").serializeArray()),
-			/*xhrFields: {
+			ataType: "json",
+			xhrFields: {
 			  withCredentials: true
-			},*/
+			},
 			success: function($result,$msg,$obj){
 				console.log($msg + " : " + $result.key);
 				//Validate if response status is 200
@@ -44,16 +45,22 @@ $(function(){
 						type: "GET",
 						url: $url_base("user/?format=json"),
 						contentType: "application/json",
-						/*crossDomain: true,*/
+						crossDomain: true,
 						dataType: "json",
 						xhrFields: {
 						  withCredentials: true
+						},
+						beforeSend: function(xhr) {
+							xhr.setRequestHeader("Cookie", "session=xxxyyyzzz");
 						},
 						//dataType: "json",
 						success: function($result,$msg,$obj){
 							//TODO-Go to next page
 							$.cookie("user_pk", $result.pk);
 							window.location.href = "dashboard.php";						
+						},
+						error:function($object,$error,$message){
+							console.error($error+ " " + $object.status + " : " + $message);
 						}
 					});								
 				}				
