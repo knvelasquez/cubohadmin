@@ -38,10 +38,11 @@ $(function(){
 	if($.cookie("timezone")===undefined)
 	{
 		//Set the time zone of the current location.
-		$.getJSON( "http://ip-api.com/json", function($data) {		
+		/*$.getJSON( "http://ip-api.com/json", function($data) {		
 			$.cookie("timezone", $data.timezone);
 			initAllGraph();			
-		});
+		});*/
+		$.cookie("timezone", "US/Eastern");
 	}		
 	else
 	{
