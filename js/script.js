@@ -50,7 +50,7 @@ $(function(){
 						success: function($result,$msg,$obj){
 							//TODO-Go to next page
 							$.cookie("user_pk", $result.pk);
-							window.location.href = "dashboard.html";						
+							window.location.href = "dashboard.php";						
 						}
 					});								
 				}				
