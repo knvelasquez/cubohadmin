@@ -42,11 +42,14 @@ $(function(){
 					//Sending GET with credentials to get user details
 					$.ajax({
 						type: "GET",
-						url: $url_base("user/"),
-						crossDomain: true,
+						url: $url_base("user/?format=json"),
+						contentType: "application/json",
+						/*crossDomain: true,*/
+						dataType: "json",
 						xhrFields: {
 						  withCredentials: true
 						},
+						//dataType: "json",
 						success: function($result,$msg,$obj){
 							//TODO-Go to next page
 							$.cookie("user_pk", $result.pk);
