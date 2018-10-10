@@ -43,6 +43,7 @@ $(function(){
 			initAllGraph();			
 		});*/
 		$.cookie("timezone", "US/Eastern");
+		initAllGraph();	
 	}		
 	else
 	{
