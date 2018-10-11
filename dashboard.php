@@ -685,8 +685,16 @@ Sidebar
   <!--<link rel="stylesheet" type="text/css" href="keen-dashboards.css" />--->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-  <script src="js/dashboard.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />  
+  <!-- Project Analytics -->
+  <!--<script type="text/javascript" src="static/js/keen-analytics.js"></script>-->
+  <script crossorigin src="https://cdn.jsdelivr.net/npm/keen-analysis@3"></script>
+  <script crossorigin src="https://cdn.jsdelivr.net/npm/keen-dataviz@3.0/dist/keen-dataviz.min.js"></script>
+  <script src="js/saladboxmiami.js" type="text/javascript"></script>
+  <script src="js/dashboard.js" type="text/javascript"></script>
+  <!--<script type="text/javascript" src="newdashboard.js"></script>-->
+  <!--<script type="text/javascript" src="ordersperweek.js"></script>-->
+  <!--<script type="text/javascript" src="weeklyrevenue.js"></script>-->
 </head>
 <body class="keen-dashboard" style="padding-top: 0px;">
 	<nav id="dvnavhorizontal" class="navbar navbar-default navbar-fixed-top" style="display: none;background-color: #4651FF;border-color: #4651FF;">
@@ -1186,15 +1194,7 @@ Sidebar
 </div>
 <div style="text-align: center" class="container-fluid">
 	<p class="small text-muted">Built with &#9829; by <a href="https://www.cuboh.com">Cuboh</a></p>
-</div>
-  <!-- Project Analytics -->
-  <!--<script type="text/javascript" src="static/js/keen-analytics.js"></script>-->
-  <script crossorigin src="https://cdn.jsdelivr.net/npm/keen-analysis@3"></script>
-  <script crossorigin src="https://cdn.jsdelivr.net/npm/keen-dataviz@3.0/dist/keen-dataviz.min.js"></script>
-  <script src="js/saladboxmiami.js"></script>
-  <!--<script type="text/javascript" src="newdashboard.js"></script>-->
-  <!--<script type="text/javascript" src="ordersperweek.js"></script>-->
-  <!--<script type="text/javascript" src="weeklyrevenue.js"></script>-->
+</div>  
 <script>
 /*const client = new KeenAnalysis({
   projectId: '5b64e745c9e77c0001ea6d78',
@@ -1229,19 +1229,46 @@ function createNewSavedQuery(){
         }
       }
     })
-    .then(res => {
+	.then(function(res) {
+		console.log('created...', res);
+		return getResult();
+     })
+	  .catch(function(err) {
+       console.log(err);
+     });
+    /*.then(res => {
       console.log('created...', res);
       return getResult();
     })
     .catch(err => {
       console.log(err);
-    });
+    });*/
 }
 function getResult(){
   console.log('run getResult');
   return client
-    .query('saved', savedQueryName)
-    .then(res => {
+    .query('saved', savedQueryName)   	
+	.then(function(res) {
+		console.log('got result', res);
+		// create a keenDataviz instance
+		const revenuetodayDataviz = new KeenDataviz({
+			container: '#revenuetoday',
+			type: 'metric',
+			prefix: '$'
+		});
+		// pass the response into the KeenDataviz instance
+		revenuetodayDataviz.render(res);
+     })
+	 .catch(function(err) {
+		if (err && !err.ok && err.error_code === 'ResourceNotFoundError') {
+			// saved query doesn't exist yet - create a new one
+			console.log('saved query not found', err);
+			return createNewSavedQuery();
+		}
+		// other errors
+		console.log(err);
+     });
+	/*.then(res => {
       console.log('got result', res);
 
       // create a keenDataviz instance
@@ -1262,7 +1289,7 @@ function getResult(){
       }
       // other errors
       console.log(err);
-    });
+    });*/
 }
 //getResult();
 //month range picker js
