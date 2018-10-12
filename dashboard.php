@@ -690,7 +690,7 @@ Sidebar
   <!--<script type="text/javascript" src="static/js/keen-analytics.js"></script>-->
   <script crossorigin src="https://cdn.jsdelivr.net/npm/keen-analysis@3"></script>
   <script crossorigin src="https://cdn.jsdelivr.net/npm/keen-dataviz@3.0/dist/keen-dataviz.min.js"></script>
-  <script src="js/saladboxmiami.js" type="text/javascript"></script>
+  <script src="js/admin.js" type="text/javascript"></script>
   <script src="js/dashboard.js" type="text/javascript"></script>
   <!--<script type="text/javascript" src="newdashboard.js"></script>-->
   <!--<script type="text/javascript" src="ordersperweek.js"></script>-->
@@ -848,6 +848,33 @@ Sidebar
         </div>
       </div>
     </div>
+	<div class="col-sm-12 col-md-12">
+      <div class="chart-wrapper">
+        <div class="chart-title">
+          Weekly per Sales.
+			<div style="float: right;margin-top: -3px;margin-left: 3px;">
+				<a href="javascript:;" data-toggle="modal" data-target="#csvModal" style="text-decoration-line: none;">
+					<span class="mrp-icon" style="border-radius: 5px 5px 5px 5px;font-size: 11px;font-weight: bold;">CSV</span>	
+				</a>
+			</div>
+			<!--DateRange-->
+			<div style="float:right;margin-top:-2px">
+				<div style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%;display: inline;" graph="#weekly_sales" graph_call="set_weekly_sales" class="reportrange">
+					<i class="fa fa-calendar"></i>&nbsp;
+					<span>
+					<!--<span class="mrp-lowerMonth">Jul 2014</span>
+					<span class="mrp-to"> to </span>
+					<span class="mrp-upperMonth">Aug 2014</span>-->
+					</span>
+				</div>				
+			</div>			
+        </div>
+        <div class="chart-stage" id="weekly_sales"></div>
+        <div class="chart-notes">
+          This is the total of Weekly per Sales.
+        </div>
+      </div>
+    </div>
     <div class="col-sm-6 col-md-6">
       <div class="chart-wrapper">
         <div class="chart-title">
@@ -874,43 +901,11 @@ Sidebar
           This is how much money you earned this week
         </div>
       </div>
-    </div>
+    </div>    
     <div class="col-sm-6 col-md-6">
       <div class="chart-wrapper">
         <div class="chart-title">
-          Revenue Per Platform
-			<div style="float: right;margin-top: -3px;margin-left: 3px;">
-					<a href="javascript:;" data-toggle="modal" data-target="#csvModal" style="text-decoration-line: none;">
-						<span class="mrp-icon" style="border-radius: 5px 5px 5px 5px;font-size: 11px;font-weight: bold;">CSV</span>	
-					</a>
-			</div>
-			<!--DateRange-->
-			<div style="float:right;margin-top:-2px">
-				<div style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%;display: inline;" graph="#revenuetoday2" graph_call="sales_per_source" class="reportrange">
-					<i class="fa fa-calendar"></i>&nbsp;
-					<span>
-					<span class="mrp-lowerMonth">Jul 2014</span>
-					<span class="mrp-to"> to </span>
-					<span class="mrp-upperMonth">Aug 2014</span>
-					</span>
-				</div>				
-			</div>		  
-        </div>
-        <div class="chart-stage" id="revenuetoday2"></div>
-        <div class="chart-notes">
-          This is how much money you earned this last week per platform
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6 col-md-6">
-      <div class="chart-wrapper">
-        <div class="chart-title">
-			Sales Breakdown per Source This Week
-			<div style="float: right;margin-top: -3px;margin-left: 3px;">
-					<a href="javascript:;" data-toggle="modal" data-target="#csvModal" style="text-decoration-line: none;">
-						<span class="mrp-icon" style="border-radius: 5px 5px 5px 5px;font-size: 11px;font-weight: bold;">CSV</span>	
-					</a>
-			</div>
+			Sales Breakdown per Source This Week			
 			<!--DateRange-->
 			<div style="float:right;margin-top:-2px">
 				<div style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%;display: inline;" graph="#sales_per_source" graph_call="set_sales_per_source" class="reportrange">
@@ -981,70 +976,11 @@ Sidebar
           This is the total sales per platform.
         </div>
       </div>
-    </div>
-	<div class="col-sm-6 col-md-6">
-      <div class="chart-wrapper">
-        <div class="chart-title">
-          Weekly per Sales.
-			<div style="float: right;margin-top: -3px;margin-left: 3px;">
-				<a href="javascript:;" data-toggle="modal" data-target="#csvModal" style="text-decoration-line: none;">
-					<span class="mrp-icon" style="border-radius: 5px 5px 5px 5px;font-size: 11px;font-weight: bold;">CSV</span>	
-				</a>
-			</div>
-			<!--DateRange-->
-			<div style="float:right;margin-top:-2px">
-				<div style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%;display: inline;" graph="#weekly_sales" graph_call="set_weekly_sales" class="reportrange">
-					<i class="fa fa-calendar"></i>&nbsp;
-					<span>
-					<!--<span class="mrp-lowerMonth">Jul 2014</span>
-					<span class="mrp-to"> to </span>
-					<span class="mrp-upperMonth">Aug 2014</span>-->
-					</span>
-				</div>				
-			</div>			
-        </div>
-        <div class="chart-stage" id="weekly_sales"></div>
-        <div class="chart-notes">
-          This is the total of Weekly per Sales.
-        </div>
-      </div>
-    </div>
+    </div>	    
     <div class="col-sm-6 col-md-6">
       <div class="chart-wrapper">
         <div class="chart-title">
-          Number of Orders
-			<div style="float: right;margin-top: -3px;margin-left: 3px;">
-				<a href="javascript:;" data-toggle="modal" data-target="#csvModal" style="text-decoration-line: none;">
-					<span class="mrp-icon" style="border-radius: 5px 5px 5px 5px;font-size: 11px;font-weight: bold;">CSV</span>	
-				</a>
-			</div>
-			<!--DateRange-->
-			<div style="float:right;margin-top:-2px">
-				<div style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%;display: inline;" graph="#orders_perweek" graph_call="set_orders_perweek" class="reportrange">
-					<i class="fa fa-calendar"></i>&nbsp;
-					<span>
-					<!--<span class="mrp-lowerMonth">Jul 2014</span>
-					<span class="mrp-to"> to </span>
-					<span class="mrp-upperMonth">Aug 2014</span>-->
-					</span>
-				</div>				
-			</div>
-        </div>
-        <div class="chart-stage" id="orders_perweek"></div>
-        <div class="chart-notes">
-          How many orders you received this week
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6 col-md-6">
-      <div class="chart-wrapper">
-        <div class="chart-title">
-          Average Order Value
-			<div style="float: right;margin-top: -3px;margin-left: 3px;">
-				<a href="javascript:;" data-toggle="modal" data-target="#csvModal" style="text-decoration-line: none;">
-					<span class="mrp-icon" style="border-radius: 5px 5px 5px 5px;font-size: 11px;font-weight: bold;">CSV</span>	
-				</a>
-			</div>
+          Average Order Value			
 			<!--DateRange-->
 			<div style="float:right;margin-top:-2px">
 				<div style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%;display: inline;" graph="#average_order_value" graph_call="set_average_order_value" class="reportrange">
@@ -1066,12 +1002,7 @@ Sidebar
     <div class="col-sm-6 col-md-6">
       <div class="chart-wrapper">
         <div class="chart-title">
-          Average Order Value Per Platform
-			<div style="float: right;margin-top: -3px;margin-left: 3px;">
-				<a href="javascript:;" data-toggle="modal" data-target="#csvModal" style="text-decoration-line: none;">
-					<span class="mrp-icon" style="border-radius: 5px 5px 5px 5px;font-size: 11px;font-weight: bold;">CSV</span>	
-				</a>
-			</div>
+          Average Order Value Per Platform			
 			<!--DateRange-->
 			<div style="float:right;margin-top:-2px">
 				<div style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%;display: inline;" graph="#average_order_value_per_platform" graph_call="set_average_order_value_per_platform" class="reportrange">
@@ -1138,7 +1069,7 @@ Sidebar
 				</div>				
 			</div>			
         </div>
-        <div class="chart-stage" id="iteminv"></div>
+        <div class="chart-stage" id="iteminv" style="height:500px;overflow:auto"></div>
         <div class="chart-notes">
           How much Item Sales
         </div>
@@ -1165,7 +1096,7 @@ Sidebar
 				</div>				
 			</div>			
         </div>
-        <div class="chart-stage" id="modinv"></div>
+        <div class="chart-stage" id="modinv" style="height:500px;overflow:auto"></div>
         <div class="chart-notes">
           How much Modifier Sales
         </div>
