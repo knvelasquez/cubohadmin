@@ -23,7 +23,8 @@ $(function(){
 		  readKey: "0B63415EBF79394D682631551864E85C7ADC59238B68C94D1BAFCAB5E42F130240F96387571C97757EE77BF5680B64A97F0AF3262915F7E5E89CB6CFCA80413CEE1B88BA3D0F09317DC1E63F20A24EADE3F79076E509A1E6082AF9DE319C97CE"
 	});
 	//Set user id
-	var $userpk=$.cookie("user_pk");
+	//var $userpk=$.cookie("user_pk");
+	var $userpk=16;
 	//set loading div
 	set_loading=function(element){
 		$(element).html("<div class=\"keen-dataviz\">"+
