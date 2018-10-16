@@ -4,6 +4,11 @@
  *@Date:       @Date
 */
 $(function(){	
+	//Validate if user has session
+	if($.cookie("user_pk")!==undefined)
+	{
+		window.location.href = "./dashboard.php";
+	}
 	/*
 	 *@url_base:@decription	 
 	*/

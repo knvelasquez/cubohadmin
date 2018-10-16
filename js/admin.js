@@ -14,7 +14,7 @@ var set_loading
 	,set_average_order_value_per_platform
 	,set_taxes
 	,set_iteminv
-	,set_modinv;
+	,set_modinv;	
 $(function(){
 	//Set Keen JS Cliend Credentials
 	var client = new Keen({
@@ -22,10 +22,6 @@ $(function(){
 		  masterKey: "4B17301A4D08BE5B07EDAD4876420B919390893E3B53DCB34D235224EC4E0590",
 		  readKey: "0B63415EBF79394D682631551864E85C7ADC59238B68C94D1BAFCAB5E42F130240F96387571C97757EE77BF5680B64A97F0AF3262915F7E5E89CB6CFCA80413CEE1B88BA3D0F09317DC1E63F20A24EADE3F79076E509A1E6082AF9DE319C97CE"
 	});
-	//Check if user_pk cookie existe
-	if($.cookie("user_pk")===undefined){
-		window.location.href = "./";
-	}
 	//Set user id
 	var $userpk=$.cookie("user_pk");
 	//set loading div

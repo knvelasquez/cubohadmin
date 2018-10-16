@@ -22,6 +22,13 @@ var $timeframe={
 	}
 };
 $(function(){
+	//Validate if user has session
+	if($.cookie("user_pk")===undefined)
+	{
+		window.location.href = "./";
+	}
+	//Set the tooltips.
+	$('[data-toggle="tooltip"]').tooltip();
 	//Initialize all graphipc
 	var initAllGraph=function(){
 		set_revenue_today();
@@ -94,5 +101,35 @@ $(function(){
 				console.log("function "+this.element.attr("graph_call")+" not exist!");
 				$(this.element.attr("graph")).html("");
 			}					
-	});		
+	});	
+	//Logout user
+	$("#btnlogout").click(function(){
+		$.ajax({
+			type: "POST",
+			url: "https://fathomless-thicket-42350.herokuapp.com/rest-auth/logout/",
+			crossDomain: true,
+			data:{},			
+			xhrFields: {
+			  withCredentials: false
+			},		
+			headers:{},			
+			beforeSend: function(xhr) {	},
+			success: function($result,$msg,$obj){
+				console.log($msg + " : " + $result.key);
+				//Validate if response status is 200
+				if($obj.status===200)
+				{		
+					$.removeCookie("user_pk")
+					alert($result.detail);	
+					window.location.href = "./";					
+				}				
+			},
+			error:function($object,$error,$message) {			
+				console.warn($error+ " " + $object.status.toString() + " : " + $message);
+			},
+			always:function($object,$info,$message) {
+				console.info($info+ " " + $info.status + " : " + $message);			
+			}
+		});
+	});
 });
