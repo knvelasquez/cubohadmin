@@ -3,15 +3,15 @@
 	<meta charset="utf-8">	
 	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
 	<title>Cuboh &raquo;login</title>	
-	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-	<link href="../static/css/login.css" />
+	<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+	<link rel="stylesheet" type="text/css" href="static/css/login.css"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />  
-	<link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" />
+	<link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico"/>
 	<link rel="mask-icon" type="" href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" />
 	<link rel="canonical" href="https://codepen.io/dpinnick/pen/LjdLmo?limit=all&page=21&q=service" />
-	<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'/>
-	<link rel="stylesheet" href="./cuboh.css" />  	
+	<link rel="stylesheet" type="text/css" href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'/>
+	<link rel="stylesheet" type="text/css" href="./cuboh.css" />  	
 </head>
 <body>
 	<div class="login">
@@ -21,13 +21,10 @@
 				<div class="col-lg-6 right-box">      	 	   
 					<div class="user">                      
 						<div class="form-wrap">
-							<!-- TABS -->
 							<div class="tabs">
 								<h3 class="login-tab"><a class="log-in active" href="#login-tab-content"><span>Login<span></a></h3>								
 							</div>
-							<!-- TABS CONTENT -->
 							<div class="tabs-content">
-								<!-- TABS CONTENT LOGIN -->
 								<div id="login-tab-content" class="active">
 									<form class="form-horizontal" action="#" method="POST" autocomplete="off">
 										<div align="center">
@@ -41,12 +38,12 @@
 										<input type="button" class="button" value="Login"/>                              
 									</form>
 									<div class="help-action">
-									<p>
-										<i class="fa fa-arrow-left" aria-hidden="true"></i>
-										<a class="forgot" href="#">Forgot your password?</a>
-									</p>
+										<p>
+											<i class="fa fa-arrow-left" aria-hidden="true"></i>
+											<a class="forgot" href="#">Forgot your password?</a>
+										</p>
 									</div>
-							  </div>
+								</div>
 							</div>
 						</div>
 					</div>
