@@ -104,6 +104,7 @@ $(function(){
 	});	
 	//Logout user
 	$("#btnlogout").click(function(){
+		$.removeCookie("user_pk");
 		window.location.href = "./";
 		/*$.ajax({
 			type: "POST",
