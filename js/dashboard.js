@@ -104,15 +104,18 @@ $(function(){
 	});	
 	//Logout user
 	$("#btnlogout").click(function(){
-		$.ajax({
+		window.location.href = "./";
+		/*$.ajax({
 			type: "POST",
 			url: "https://fathomless-thicket-42350.herokuapp.com/rest-auth/logout/",
 			crossDomain: true,
 			data:{},			
 			xhrFields: {
-			  withCredentials: false
+			  withCredentials: true
 			},		
-			headers:{},			
+			headers:{
+				//"sessionid":"ahcrydcovtrhs0wpeg3buwfspapzyi5i"
+			},			
 			beforeSend: function(xhr) {	},
 			success: function($result,$msg,$obj){
 				console.log($msg + " : " + $result.key);
@@ -130,6 +133,6 @@ $(function(){
 			always:function($object,$info,$message) {
 				console.info($info+ " " + $info.status + " : " + $message);			
 			}
-		});
+		});*/
 	});
 });
