@@ -3,12 +3,7 @@
  *@Description:@Description
  *@Date:       @Date
 */
-$(function(){	
-	//Validate if user has session
-	if($.cookie("user_pk")!==undefined)
-	{
-		window.location.href = "./dashboard.php";
-	}
+$(function(){		
 	/*
 	 *@url_base:@decription	 
 	*/
@@ -30,59 +25,56 @@ $(function(){
 	$(".button").click(function(){
 		$button=$(this);
 		$button.val("Wait...");
-		//Sending POST with parameters.
-		var $login=function($withCredentials){						
-			$.ajax({
-				type: "POST",
-				url: $url_base("login/"),
-				crossDomain: true,
-				data:$setParam($(".form-horizontal").serializeArray()),			
-				xhrFields: {
-				  withCredentials: $withCredentials
-				},		
-				headers : {
-					//'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
-				},			
-				beforeSend: function(xhr) {	},
-				success: function($result,$msg,$obj){
-					console.log($msg + " : " + $result.key);
-					//Validate if response status is 200
-					if($obj.status===200)
-					{			
-						//Sending GET with credentials to get user details
-						$.ajax({
-							type: "GET",
-							url: $url_base("user/?format=json"),
-							contentType: "application/json",
-							//crossDomain: true,
-							//dataType: "json",
-							xhrFields: {
-							  withCredentials: true
-							},						
-							headers : {},
-							beforeSend: function(xhr) {},						
-							success: function($result,$msg,$obj){
-								//TODO-Go to next page
-								$.cookie("user_pk", $result.pk);
-								window.location.href = "dashboard.php";						
-							},
-							error:function($object,$error,$message){
-								console.warn($error+ " " + $object.status.toString() + " : " + $message);	
-								$login(true);								
-							}
-						});								
-					}				
-				},
-				error:function($object,$error,$message) {			
-					console.warn($error+ " " + $object.status.toString() + " : " + $message);
-					$login(true);
-				},
-				always:function($object,$info,$message) {
-					console.info($info+ " " + $info.status + " : " + $message);
-					$button.val("Login");			
-				}
-			});	
-		};
-		$login(false);						
+		//Sending POST with parameters.					
+		$.ajax({
+			type: "POST",
+			url: $url_base("login/"),
+			crossDomain: true,
+			data:$setParam($(".form-horizontal").serializeArray()),			
+			xhrFields:{
+			  withCredentials: false
+			},		
+			headers:{},			
+			beforeSend: function(xhr) {	},
+			success: function($result,$msg,$obj){
+				console.log($msg + " : " + $result.key);
+				if($obj.status===200)
+				{			
+					$.cookie("token", $result.key);
+					$.ajax({
+						type: "GET",
+						url: $url_base("user/"),
+						contentType: "application/json",
+						crossDomain: true,						
+						xhrFields: {
+						  withCredentials: true
+						},						
+						headers : {
+							'Authorization':'Token '+$result.key,
+						},
+						beforeSend: function(xhr) {},						
+						success: function($result,$msg,$obj){
+							$.cookie("name",$result.first_name.toUpperCase().substring(0,2)+"-"+$result.last_name.toUpperCase().substring(0,2))
+							$.cookie("user_pk", $result.pk);							
+							window.location.href = "dashboard.php";						
+						},
+						error:function($object,$error,$message){
+							console.log($error+ " " + $object.status.toString() + " : " + $message);								
+						},
+						always:function($object,$error,$message){
+							console.log($error+ " " + $object.status.toString() + " : " + $message);
+						}
+					});								
+				}				
+			},
+			error:function($object,$error,$message) {			
+				console.log($error+ " " + $object.status.toString() + " : " + $message);
+				alert("Incorrect user or password");
+			},
+			always:function($object,$info,$message) {
+				console.log($info+ " " + $info.status + " : " + $message);
+				$button.val("Login");			
+			}
+		});							
 	})
 });

@@ -1,3 +1,14 @@
+<?php
+/*
+ *Validate if user has session
+*/
+require_once 'vertion.php';
+if(isset($_COOKIE['user_pk'])) 
+{
+	header('Location: ./dashboard.php');
+	exit;
+}
+?>
 <html>
 <head>
 	<meta charset="utf-8">	
@@ -35,7 +46,16 @@
 										</div>
 										<input type="checkbox" class="checkbox" checked id="remember_me"/>
 										<label for="remember_me">Remember me</label>
-										<input type="button" class="button" value="Login"/>                              
+										<input type="button" class="button" value="Login"/>      
+										<span style="
+											font-size: 10px;
+											font-weight: bold;
+											margin-top: -18px;
+											margin-left: 40px;
+											position: absolute;
+											color: #4651FF;
+											font-family: monospace;
+										"><?php echo $version; ?></span>										
 									</form>
 									<div class="help-action">
 										<p>

@@ -26,7 +26,6 @@ $files = array(
 	/*Js*/
 	,'admin' => 'js/admin.js'
 	,'dashboard' =>'js/dashboard.js'
-	,'dashboardv1.0' =>'js/dashboardv1.0.js'
 	,'cookie' =>'js/jquery.cookie.js'
 	,'script' =>'js/script.js'		
 );

@@ -305,7 +305,7 @@ exit;
 	<script type="text/javascript" src="cdn.php?file=daterangepicker_js"></script> 
 	<!--CubohAdmin Site-->
 	<script type="text/javascript" src="cdn.php?file=admin"></script>  
-	<script type="text/javascript" src="cdn.php?file=dashboardv1.0"></script>    	
+	<script type="text/javascript" src="cdn.php?file=dashboard"></script>    	
 	<script type="text/javascript" src="js/site.js"></script>    		
 </body>
 </html>
