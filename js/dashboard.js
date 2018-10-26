@@ -98,28 +98,10 @@ $(function(){
 			}					
 	});	
 	//Logout user
-	$("#btnlogout,.logout-btn").click(function(){		
-		$.ajax({			  
-			  type: 'POST',
-			  url: 'https://fathomless-thicket-42350.herokuapp.com/rest-auth/logout/',		  
-			  contentType: 'text/plain',
-			  crossDomain: true,
-			  xhrFields: {
-					withCredentials: true
-			  },
-			  headers: {
-				'Authorization':'Token '+ $.cookie("token"),
-			  },
-			  success: function($result) {
-				console.log($result);
-				$.removeCookie("token");
-				$.removeCookie("user_pk");
-				$.removeCookie("name");
-				window.location.href = "./";
-			  },
-			  error: function($error) {
-				console.log($error);
-			  }
-		});
+	$("#btnlogout,.logout-btn").click(function(){
+			$.removeCookie("token");
+			$.removeCookie("user_pk");
+			$.removeCookie("name");
+			window.location.href = "./";		
 	});
 });
