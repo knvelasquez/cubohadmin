@@ -1,3 +1,20 @@
+<?php
+header('Location: https://cubohadminv2.herokuapp.com/');
+/*
+ *Validate if user has not session
+*/
+require_once 'vertion.php';
+$name="#N/A";
+if(!isset($_COOKIE['user_pk'])) 
+{
+	header('Location: ./');
+	exit;
+}
+if(isset($_COOKIE['name'])) 
+{
+	$name=$_COOKIE['name'];
+}
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -28,6 +45,14 @@
 				<a class="navbar-brand" href="#">
 					<img src="static/img/cuboh-image.svg" width="20px"/>
 				</a>
+				<span style="
+					color: white;
+					font-size: 10px;
+					position: absolute;
+					margin-top: 36px;
+					margin-left: -39px;
+					font-family: monospace;
+				"><?php echo $name; ?></span>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -37,7 +62,7 @@
 							<img src="static/img/chart-67.png" width="20px"/>
 						</a>
 					</li>
-					<li class="button" style="background-color: white;width: 53px;margin-left: 68px;border-radius: .25em;margin-top: -41px;">
+					<li class="button logout-btn" style="background-color: white;width: 53px;margin-left: 68px;border-radius: .25em;margin-top: -41px;">
 						<a href="#">
 							<img src="static/img/settings-25-67.png" width="20px"/>
 						</a>
@@ -48,6 +73,15 @@
 	</nav>
 	<nav class="cd-side-nav">
 		<ul>
+			<div style="
+				color: white;
+				font-weight: bold;
+				margin-left: 14px;
+				margin-top: -9px;
+				position: absolute;
+				font-size: 13px;
+				font-family: monospace;
+			"><?php echo $name; ?></div>
 			<div style="margin-top: -50px; margin-left: -5px;">
 				<a>
 					<img srcset="static/img/cuboh-image.svg" style="width: 40%;"/>
@@ -277,7 +311,15 @@
 		</div>
 	</div>
 	<div style="text-align: center" class="container-fluid">
-		<p class="small text-muted">Built with &#9829; by <a href="https://www.cuboh.com">Cuboh</a></p>
+		<p class="small text-muted">Built with &#9829; by <a href="https://www.cuboh.com">Cuboh</a><span style="
+											font-size: 10px;
+											font-weight: bold;
+											margin-top: 12px;
+											margin-left: -65px;
+											position: absolute;
+											color: #4651FF;
+											font-family: monospace;
+										"><?php echo $version; ?></span></p>
 	</div>  
 	<!--jQuery-->
 	<script type="text/javascript" src="cdn.php?file=jquery"></script>
@@ -299,7 +341,7 @@
 	<script type="text/javascript" src="cdn.php?file=daterangepicker_js"></script> 
 	<!--CubohAdmin Site-->
 	<script type="text/javascript" src="cdn.php?file=admin"></script>  
-	<script type="text/javascript" src="cdn.php?file=dashboardv1.0"></script>    	
+	<script type="text/javascript" src="cdn.php?file=dashboard"></script>    	
 	<script type="text/javascript" src="js/site.js"></script>    		
 </body>
 </html>
