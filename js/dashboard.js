@@ -22,6 +22,10 @@ var $timeframe={
 	}
 };
 $(function(){	
+	//Set the Dropdown Table Options.
+	$(".dropdown.table-options ul a").click(function($event){
+		$(this).closest(".dropdown.table-options").find("button span:first-child").html($(this).text());
+	});	
 	//Set the tooltips.
 	$('[data-toggle="tooltip"]').tooltip();
 	//Initialize all graphipc
