@@ -185,11 +185,11 @@ if(isset($_COOKIE['name']))
 						<!--Table Options-->
 						<div class="dropdown table-options" style="float:right;margin-top:-6px" graph="#revenue_today" raph="#daily_sales_per_platform" graph_call="set_daily_sales_per_platform">
 						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding: 3px 12px;">
-							<span>Graph</span>
+							<span>General</span>
 							<span class="caret"></span>
 						  </button>
 						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="left: -82px;top: 34px;">
-							<li><a href="javascript:;" graph-type="columnchart">Graph</a></li>	
+							<li><a href="javascript:;" graph-type="columnchart">General</a></li>	
 							<li><a href="javascript:;" graph-type="table">Table</a></li>
 						  </ul>
 						</div>
@@ -269,7 +269,7 @@ if(isset($_COOKIE['name']))
 						<!--Table Options-->
 						<div class="dropdown table-options" style="float:right;margin-top:-6px" graph="#iteminv" graph_call="set_iteminv">
 						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding: 3px 12px;">
-							<span>Graph</span>
+							<span>General</span>
 							<span class="caret"></span>
 						  </button>
 						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="left: -82px;top: 34px;">
@@ -301,7 +301,7 @@ if(isset($_COOKIE['name']))
 						<!--Table Options-->
 						<div class="dropdown table-options" style="float:right;margin-top:-6px" graph="#modinv" graph_call="set_modinv">
 						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding: 3px 12px;">
-							<span>Graph</span>
+							<span>General</span>
 							<span class="caret"></span>
 						  </button>
 						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="left: -82px;top: 34px;">
