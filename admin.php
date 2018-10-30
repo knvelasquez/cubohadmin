@@ -1,5 +1,4 @@
 <?php
-header('Location: https://cubohadminv2.herokuapp.com/');
 /*
  *Validate if user has not session
 */
@@ -109,7 +108,19 @@ if(isset($_COOKIE['name']))
 		<div class="row">
 			<div class="col-sm-12 col-md-12">
 				<div class="chart-wrapper">
-					<div class="chart-title">Revenue Today</div>
+					<div class="chart-title">Revenue Today
+						<!--Table Options-->
+						<div class="dropdown table-options" style="float:right;margin-top:-6px">
+						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding: 3px 12px;">
+							<span>Table</span>
+							<span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="left: -82px;top: 34px;">
+							<li><a href="javascript:;">Table</a></li>
+							<li><a href="javascript:;">Graph</a></li>																	
+						  </ul>
+						</div>												
+					</div>
 					<div class="chart-stage" id="revenue_today"></div>
 					<div class="chart-notes">This is how much money you earned today.</div>
 				</div>
@@ -123,13 +134,24 @@ if(isset($_COOKIE['name']))
 								<span class="mrp-icon" style="border-radius: 5px 5px 5px 5px;font-size: 11px;font-weight: bold;">CSV</span>	
 							</a>
 						</div>
+						<!--Table Options-->
+						<div class="dropdown table-options" style="float:right;margin-top:-6px">
+						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding: 3px 12px;">
+							<span>Table</span>
+							<span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="left: -82px;top: 34px;">
+							<li><a href="javascript:;">Table</a></li>
+							<li><a href="javascript:;">Graph</a></li>																	
+						  </ul>
+						</div>
 						<!--DateRange-->
 						<div style="float:right;margin-top:-2px">
 							<div style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%;display: inline;" graph="#weekly_sales" graph_call="set_weekly_sales" class="reportrange">
 								<i class="fa fa-calendar"></i>&nbsp;
 								<span></span>
 							</div>				
-						</div>			
+						</div>						
 					</div>
 					<div class="chart-stage" id="weekly_sales"></div>
 					<div class="chart-notes">
@@ -146,6 +168,17 @@ if(isset($_COOKIE['name']))
 								<span class="mrp-icon" style="border-radius: 5px 5px 5px 5px;font-size: 11px;font-weight: bold;">CSV</span>	
 							</a>
 						</div>
+						<!--Table Options-->
+						<div class="dropdown table-options" style="float:right;margin-top:-6px">
+						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding: 3px 12px;">
+							<span>Table</span>
+							<span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="left: -82px;top: 34px;">
+							<li><a href="javascript:;">Table</a></li>
+							<li><a href="javascript:;">Graph</a></li>																	
+						  </ul>
+						</div>
 						<!--DateRange-->
 						<div style="float:right;margin-top:-2px">
 							<div style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%;display: inline;" graph="#orders_per_week" graph_call="set_orders_per_week" class="reportrange">
@@ -161,7 +194,18 @@ if(isset($_COOKIE['name']))
 			<div class="col-sm-6 col-md-6">
 				<div class="chart-wrapper">
 					<div class="chart-title">
-						Sales Breakdown per Source			
+						Sales Breakdown per Source	
+						<!--Table Options-->
+						<div class="dropdown table-options" style="float:right;margin-top:-6px">
+						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding: 3px 12px;">
+							<span>Table</span>
+							<span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="left: -82px;top: 34px;">
+							<li><a href="javascript:;">Table</a></li>
+							<li><a href="javascript:;">Graph</a></li>																	
+						  </ul>
+						</div>
 						<!--DateRange-->
 						<div style="float:right;margin-top:-2px">
 							<div style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%;display: inline;" graph="#sales_per_source" graph_call="set_sales_per_source" class="reportrange">
@@ -183,6 +227,17 @@ if(isset($_COOKIE['name']))
 								<span class="mrp-icon" style="border-radius: 5px 5px 5px 5px;font-size: 11px;font-weight: bold;">CSV</span>	
 							</a>
 						</div>
+						<!--Table Options-->
+						<div class="dropdown table-options" style="float:right;margin-top:-6px">
+						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding: 3px 12px;">
+							<span>General</span>
+							<span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="left: -82px;top: 34px;">
+							<li><a href="javascript:;">General</a></li>
+							<li><a href="javascript:;">Per Platform</a></li>																	
+						  </ul>
+						</div>
 						<!--DateRange-->
 						<div style="float:right;margin-top:-2px">
 							<div style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%;display: inline;" graph="#daily_sales_per_platform" graph_call="set_daily_sales_per_platform" class="reportrange">
@@ -198,7 +253,18 @@ if(isset($_COOKIE['name']))
 			<div class="col-sm-6 col-md-6">
 				<div class="chart-wrapper">
 					<div class="chart-title">
-						Average Order Value			
+						Average Order Value	
+						<!--Table Options-->
+						<div class="dropdown table-options" style="float:right;margin-top:-6px">
+						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding: 3px 12px;">
+							<span>Table</span>
+							<span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="left: -82px;top: 34px;">
+							<li><a href="javascript:;">Table</a></li>
+							<li><a href="javascript:;">Graph</a></li>																	
+						  </ul>
+						</div>
 						<!--DateRange-->
 						<div style="float:right;margin-top:-2px">
 							<div style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%;display: inline;" graph="#average_order_value" graph_call="set_average_order_value" class="reportrange">
@@ -213,7 +279,18 @@ if(isset($_COOKIE['name']))
 			</div>
 			<div class="col-sm-6 col-md-6">
 				<div class="chart-wrapper">
-					<div class="chart-title">Average Order Value Per Platform			
+					<div class="chart-title">Average Order Value Per Platform
+						<!--Table Options-->
+						<div class="dropdown table-options" style="float:right;margin-top:-6px">
+						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding: 3px 12px;">
+							<span>Table</span>
+							<span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="left: -82px;top: 34px;">
+							<li><a href="javascript:;">Table</a></li>
+							<li><a href="javascript:;">Graph</a></li>																	
+						  </ul>
+						</div>
 						<!--DateRange-->
 						<div style="float:right;margin-top:-2px">
 							<div style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%;display: inline;" graph="#average_order_value_per_platform" graph_call="set_average_order_value_per_platform" class="reportrange">
@@ -234,6 +311,17 @@ if(isset($_COOKIE['name']))
 							<a href="javascript:;" data-toggle="modal" data-target="#csvModal" style="text-decoration-line: none;">
 								<span class="mrp-icon" style="border-radius: 5px 5px 5px 5px;font-size: 11px;font-weight: bold;">CSV</span>	
 							</a>
+						</div>
+						<!--Table Options-->
+						<div class="dropdown table-options" style="float:right;margin-top:-6px">
+						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding: 3px 12px;">
+							<span>Table</span>
+							<span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="left: -82px;top: 34px;">
+							<li><a href="javascript:;">Table</a></li>
+							<li><a href="javascript:;">Graph</a></li>																	
+						  </ul>
 						</div>
 						<!--DateRange-->
 						<div style="float:right;margin-top:-2px">
@@ -256,6 +344,17 @@ if(isset($_COOKIE['name']))
 								<span class="mrp-icon" style="border-radius: 5px 5px 5px 5px;font-size: 11px;font-weight: bold;">CSV</span>	
 							</a>
 						</div>
+						<!--Table Options-->
+						<div class="dropdown table-options" style="float:right;margin-top:-6px">
+						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding: 3px 12px;">
+							<span>General</span>
+							<span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="left: -82px;top: 34px;">
+							<li><a href="javascript:;">General</a></li>
+							<li><a href="javascript:;">Per Platform</a></li>																	
+						  </ul>
+						</div>
 						<!--DateRange-->
 						<div style="float:right;margin-top:-2px">
 							<div style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%;display: inline;" graph="#iteminv" graph_call="set_iteminv" class="reportrange">
@@ -276,6 +375,17 @@ if(isset($_COOKIE['name']))
 							<a href="javascript:;" data-toggle="modal" data-target="#csvModal" style="text-decoration-line: none;">
 								<span class="mrp-icon" style="border-radius: 5px 5px 5px 5px;font-size: 11px;font-weight: bold;">CSV</span>	
 							</a>
+						</div>
+						<!--Table Options-->
+						<div class="dropdown table-options" style="float:right;margin-top:-6px">
+						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding: 3px 12px;">
+							<span>General</span>
+							<span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="left: -82px;top: 34px;">
+							<li><a href="javascript:;">General</a></li>
+							<li><a href="javascript:;">Per Platform</a></li>																	
+						  </ul>
 						</div>
 						<!--DateRange-->
 						<div style="float:right;margin-top:-2px">
@@ -341,7 +451,7 @@ if(isset($_COOKIE['name']))
 	<script type="text/javascript" src="cdn.php?file=daterangepicker_js"></script> 
 	<!--CubohAdmin Site-->
 	<script type="text/javascript" src="cdn.php?file=admin"></script>  
-	<script type="text/javascript" src="cdn.php?file=dashboard"></script>    	
-	<script type="text/javascript" src="js/site.js"></script>    		
+	<script type="text/javascript" src="cdn.php?file=dashboard"></script>   	
+	<script type="text/javascript" src="js/site.js"></script>  	
 </body>
 </html>

@@ -21,12 +21,11 @@ var $timeframe={
 		"end":null		
 	}
 };
-$(function(){
-	//Validate if user has session
-	if($.cookie("user_pk")===undefined)
-	{
-		window.location.href = "./";
-	}
+$(function(){	
+	//Set the Dropdown Table Options.
+	$(".dropdown.table-options ul a").click(function($event){
+		$(this).closest(".dropdown.table-options").find("button span:first-child").html($(this).text());
+	});	
 	//Set the tooltips.
 	$('[data-toggle="tooltip"]').tooltip();
 	//Initialize all graphipc
@@ -103,37 +102,10 @@ $(function(){
 			}					
 	});	
 	//Logout user
-	$("#btnlogout").click(function(){
-		$.removeCookie("user_pk");
-		window.location.href = "./";
-		/*$.ajax({
-			type: "POST",
-			url: "https://fathomless-thicket-42350.herokuapp.com/rest-auth/logout/",
-			crossDomain: true,
-			data:{},			
-			xhrFields: {
-			  withCredentials: true
-			},		
-			headers:{
-				//"sessionid":"ahcrydcovtrhs0wpeg3buwfspapzyi5i"
-			},			
-			beforeSend: function(xhr) {	},
-			success: function($result,$msg,$obj){
-				console.log($msg + " : " + $result.key);
-				//Validate if response status is 200
-				if($obj.status===200)
-				{		
-					$.removeCookie("user_pk")
-					alert($result.detail);	
-					window.location.href = "./";					
-				}				
-			},
-			error:function($object,$error,$message) {			
-				console.warn($error+ " " + $object.status.toString() + " : " + $message);
-			},
-			always:function($object,$info,$message) {
-				console.info($info+ " " + $info.status + " : " + $message);			
-			}
-		});*/
+	$("#btnlogout,.logout-btn").click(function(){
+			$.removeCookie("token");
+			$.removeCookie("user_pk");
+			$.removeCookie("name");
+			window.location.href = "./";		
 	});
 });
