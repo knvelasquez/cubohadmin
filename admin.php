@@ -183,7 +183,7 @@ if(isset($_COOKIE['name']))
 							</a>
 						</div>	
 						<!--Table Options-->
-						<div class="dropdown table-options" style="float:right;margin-top:-6px" graph="#revenue_today" raph="#daily_sales_per_platform" graph_call="set_daily_sales_per_platform">
+						<div class="dropdown table-options" style="float:right;margin-top:-6px;" graph="#revenue_today" raph="#daily_sales_per_platform" graph_call="set_daily_sales_per_platform">
 						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding: 3px 12px;">
 							<span>General</span>
 							<span class="caret"></span>
@@ -201,7 +201,7 @@ if(isset($_COOKIE['name']))
 							</div>				
 						</div>			  
 					</div>
-					<div class="chart-stage" id="daily_sales_per_platform"></div>
+					<div class="chart-stage" id="daily_sales_per_platform" style="overflow:auto"></div>
 					<div class="chart-notes">This is the total daily sales per platform.</div>
 				</div>
 			</div>	    
