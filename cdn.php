@@ -28,6 +28,7 @@ $files = array(
 	,'dashboard' =>'js/dashboard.js'
 	,'cookie' =>'js/jquery.cookie.js'
 	,'script' =>'js/script.js'		
+	,'email' =>'js/email.js'		
 );
 //echo $_GET['file']==='admin';
 if(isset($files[$_GET['file']]))

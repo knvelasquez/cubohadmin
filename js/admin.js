@@ -4,7 +4,9 @@
  *@Date:       @Date
 */
 //Set the Global variable Definitions.
-var set_loading
+var client
+	,$userpk
+	,set_loading
 	,set_revenue_today
 	,set_orders_per_week
 	,set_sales_per_source
@@ -17,13 +19,13 @@ var set_loading
 	,set_modinv;	
 $(function(){
 	//Set Keen JS Cliend Credentials
-	var client = new Keen({
+	client = new Keen({
 		  projectId: "5b64e745c9e77c0001ea6d78",
 		  masterKey: "4B17301A4D08BE5B07EDAD4876420B919390893E3B53DCB34D235224EC4E0590",
 		  readKey: "0B63415EBF79394D682631551864E85C7ADC59238B68C94D1BAFCAB5E42F130240F96387571C97757EE77BF5680B64A97F0AF3262915F7E5E89CB6CFCA80413CEE1B88BA3D0F09317DC1E63F20A24EADE3F79076E509A1E6082AF9DE319C97CE"
 	});
 	//Set user id
-	var $userpk=$.cookie("user_pk");
+	$userpk=$.cookie("user_pk");
 	//set loading div
 	set_loading=function(element){
 		$(element).html("<div class=\"keen-dataviz\">"+
@@ -225,7 +227,7 @@ $(function(){
 	const averageordervalue = 'averageordervalue';
 	//Set set_average_order_value function
 	set_average_order_value=function($start,$end,$range){
-		//if $range is undefined then set it.		
+		//if $range is undefined then set it.
 		$range=($range===undefined)?"This Month":$range;
 		//Set Graph Title.
 		average_order_value.config.title="Average Order Value For " + $range;
@@ -400,5 +402,5 @@ $(function(){
 		  .catch(function(err) {
 			modinv.message(err.message);
 		  });
-	};  
+	};     
 });

@@ -60,7 +60,7 @@ if(isset($_COOKIE['name']))
 						<a href="#">
 							<img src="static/img/chart-67.png" width="20px"/>
 						</a>
-					</li>
+					</li>																			
 					<li class="button logout-btn" style="background-color: white;width: 53px;margin-left: 68px;border-radius: .25em;margin-top: -41px;">
 						<a href="#">
 							<img src="static/img/settings-25-67.png" width="20px"/>
@@ -90,7 +90,7 @@ if(isset($_COOKIE['name']))
 				<a href="#">
 					<img src="static/img/chart-67.png" style="width: 50%;"/>
 				</a>
-			</div> 	  
+			</div> 	  												
 			<div class="dropdown" style="background-color: white; width: 53px;border-radius: .25em;position: absolute;margin: 20px auto 0 auto;position: absolute;bottom: 0.5%;left: 9%;" data-toggle="tooltip" data-placement="right" title="Settings">
 				<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
 						style="background-color: white; width: 53px;border-radius: .25em;padding: 1em 5%;">
@@ -108,7 +108,13 @@ if(isset($_COOKIE['name']))
 		<div class="row">
 			<div class="col-sm-12 col-md-12">
 				<div class="chart-wrapper">
-					<div class="chart-title">Revenue Today</div>
+					<div class="chart-title">Revenue Today
+						<div style="float: right;margin-top: -3px;margin-left: 3px;" graph_call="email_revenue_today">
+							<a href="#" data-toggle="modal" data-target="#csvModal" style="text-decoration-line: none;">
+								<span class="mrp-icon" style="border-radius: 5px 5px 5px 5px;font-size: 11px;font-weight: bold;">CSV</span>	
+							</a>
+						</div>
+					</div>
 					<div class="chart-stage" id="revenue_today"></div>
 					<div class="chart-notes">This is how much money you earned today.</div>
 				</div>
@@ -117,8 +123,8 @@ if(isset($_COOKIE['name']))
 				<div class="chart-wrapper">
 					<div class="chart-title">
 					  Daily Sales
-						<div style="float: right;margin-top: -3px;margin-left: 3px;">
-							<a href="javascript:;" data-toggle="modal" data-target="#csvModal" style="text-decoration-line: none;">
+						<div style="float: right;margin-top: -3px;margin-left: 3px;" graph_call="email_weekly_sales">
+							<a href="#" data-toggle="modal" data-target="#csvModal" style="text-decoration-line: none;">
 								<span class="mrp-icon" style="border-radius: 5px 5px 5px 5px;font-size: 11px;font-weight: bold;">CSV</span>	
 							</a>
 						</div>						
@@ -140,8 +146,8 @@ if(isset($_COOKIE['name']))
 				<div class="chart-wrapper">
 					<div class="chart-title">
 						Number of Weekly Orders
-						<div style="float: right;margin-top: -3px;margin-left: 3px;">
-							<a href="javascript:;" data-toggle="modal" data-target="#csvModal" style="text-decoration-line: none;">
+						<div style="float: right;margin-top: -3px;margin-left: 3px;" graph_call="email_orders_per_week">
+							<a href="#" data-toggle="modal" data-target="#csvModal" style="text-decoration-line: none;">
 								<span class="mrp-icon" style="border-radius: 5px 5px 5px 5px;font-size: 11px;font-weight: bold;">CSV</span>	
 							</a>
 						</div>						
@@ -177,8 +183,8 @@ if(isset($_COOKIE['name']))
 				<div class="chart-wrapper">
 					<div class="chart-title">
 						Daily Sales per Platform.
-						<div style="float: right;margin-top: -3px;margin-left: 3px;">
-							<a href="javascript:;" data-toggle="modal" data-target="#csvModal" style="text-decoration-line: none;">
+						<div style="float: right;margin-top: -3px;margin-left: 3px;" graph_call="email_daily_sales_per_platform">
+							<a href="#" data-toggle="modal" data-target="#csvModal" style="text-decoration-line: none;">
 								<span class="mrp-icon" style="border-radius: 5px 5px 5px 5px;font-size: 11px;font-weight: bold;">CSV</span>	
 							</a>
 						</div>	
@@ -240,8 +246,8 @@ if(isset($_COOKIE['name']))
 				<div class="chart-wrapper">
 					<div class="chart-title">
 						Monthly Taxes
-						<div style="float: right;margin-top: -3px;margin-left: 3px;">
-							<a href="javascript:;" data-toggle="modal" data-target="#csvModal" style="text-decoration-line: none;">
+						<div style="float: right;margin-top: -3px;margin-left: 3px;" graph_call="email_taxes">
+							<a href="#" data-toggle="modal" data-target="#csvModal" style="text-decoration-line: none;">
 								<span class="mrp-icon" style="border-radius: 5px 5px 5px 5px;font-size: 11px;font-weight: bold;">CSV</span>	
 							</a>
 						</div>						
@@ -261,8 +267,8 @@ if(isset($_COOKIE['name']))
 				<div class="chart-wrapper">
 					<div class="chart-title">
 						Item Sales
-						<div style="float: right;margin-top: -3px;margin-left: 3px;">
-							<a href="javascript:;" data-toggle="modal" data-target="#csvModal" style="text-decoration-line: none;">
+						<div style="float: right;margin-top: -3px;margin-left: 3px;" graph_call="email_iteminv">
+							<a href="#" data-toggle="modal" data-target="#csvModal" style="text-decoration-line: none;">
 								<span class="mrp-icon" style="border-radius: 5px 5px 5px 5px;font-size: 11px;font-weight: bold;">CSV</span>	
 							</a>
 						</div>	
@@ -293,8 +299,8 @@ if(isset($_COOKIE['name']))
 				<div class="chart-wrapper">
 					<div class="chart-title">
 						Modifier Sales
-						<div style="float: right;margin-top: -3px;margin-left: 3px;">
-							<a href="javascript:;" data-toggle="modal" data-target="#csvModal" style="text-decoration-line: none;">
+						<div style="float: right;margin-top: -3px;margin-left: 3px;" graph_call="email_modinv">
+							<a href="#" data-toggle="modal" data-target="#csvModal" style="text-decoration-line: none;">
 								<span class="mrp-icon" style="border-radius: 5px 5px 5px 5px;font-size: 11px;font-weight: bold;">CSV</span>	
 							</a>
 						</div>	
@@ -323,7 +329,7 @@ if(isset($_COOKIE['name']))
 			</div>
 		</div>
 	</div>
-	<!-- Modal-Popup -->
+	<!-- Modal-Email-Popup -->
 	<div class="modal fade" id="csvModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -333,11 +339,11 @@ if(isset($_COOKIE['name']))
 				</div>
 				<div class="modal-body">
 					<div>
-						<input type="text" class="form-control" placeholder="Email Adress" aria-describedby="basic-addon2">
+						<input id="dvemailtxt" type="text" class="form-control" placeholder="Email Adress" aria-describedby="basic-addon2">
 					</div>
 				</div>
 				<div class="modal-footer">        
-					<button type="button" class="btn btn-default" data-dismiss="modal">Send</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal" onclick="email_send('email_weekly_sales')">Send</button>
 				</div>
 			</div>
 		</div>
@@ -374,6 +380,7 @@ if(isset($_COOKIE['name']))
 	<!--CubohAdmin Site-->
 	<script type="text/javascript" src="cdn.php?file=admin"></script>  
 	<script type="text/javascript" src="cdn.php?file=dashboard"></script>   	
+	<script type="text/javascript" src="cdn.php?file=email"></script>   	
 	<script type="text/javascript" src="js/site.js"></script>  	
 </body>
 </html>
