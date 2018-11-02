@@ -23,8 +23,15 @@ var $timeframe={
 };
 $(function(){	
 	//Set the Dropdown Table Options.
-	$(".dropdown.table-options ul a").click(function($event){
+	$(".dropdown.table-options ul a").click(function($event){		
+		$graphType=$(this).attr("graph-type");
+		$graphelem=$(this).closest(".dropdown.table-options").attr("graph");
+		$graphCall=$(this).closest(".dropdown.table-options").attr("graph_call");
 		$(this).closest(".dropdown.table-options").find("button span:first-child").html($(this).text());
+		//Set refresh graph
+		set_loading($graphelem);
+		//set the call.
+		window[$graphCall](undefined,undefined,undefined,$graphType);
 	});	
 	//Set the tooltips.
 	$('[data-toggle="tooltip"]').tooltip();
