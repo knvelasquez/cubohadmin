@@ -339,7 +339,15 @@ $(function(){
 		//Validation for last selected date.
 		$range=global_graph["#iteminv"]!==undefined?global_graph["#iteminv"]["range"]:$range;
 		//Set Graph Title.
-		iteminv.config.title="Item Sales " + $range;	
+		iteminv.config.title="Item Sales " + $range;
+		if($start===undefined && global_graph["#iteminv"]!==undefined)
+		{
+			$start=global_graph["#iteminv"]["start"];
+		}
+		if($end===undefined && global_graph["#modinv"]!==undefined)
+		{
+			$end=global_graph["#iteminv"]["end"];
+		}		
 		//Set Date Range Span Label	
 		$("div.reportrange[graph=#iteminv]>span").html(($range!=="Custom Range")?$range:$start.format('YYYY-MM-DD') +" - " + $end.format('YYYY-MM-DD'));
 		//client request
@@ -384,6 +392,14 @@ $(function(){
 		$range=global_graph["#modinv"]!==undefined?global_graph["#modinv"]["range"]:$range;
 		//Set Graph Title.
 		modinv.config.title="Modifier Sales " + $range;
+		if($start===undefined && global_graph["#modinv"]!==undefined)
+		{
+			$start=global_graph["#modinv"]["start"];
+		}
+		if($end===undefined && global_graph["#modinv"]!==undefined)
+		{
+			$end=global_graph["#modinv"]["end"];
+		}
 		//Set Date Range Span Label	
 		$("div.reportrange[graph=#modinv]>span").html(($range!=="Custom Range")?$range:$start.format('YYYY-MM-DD') +" - " + $end.format('YYYY-MM-DD'));
 		//client request
