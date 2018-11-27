@@ -128,9 +128,9 @@ $(function(){
 	});	
 	//Logout user
 	$("#btnlogout,.logout-btn").click(function(){
-			$.removeCookie("token");
-			$.removeCookie("user_pk");
-			$.removeCookie("name");
-			window.location.href = "./";		
+		$.removeCookie("token");
+		$.removeCookie("user_pk");
+		$.removeCookie("name");
+		window.location.href = "./";		
 	});
 });
