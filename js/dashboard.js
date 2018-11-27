@@ -88,6 +88,11 @@ $(function(){
 		//"opens": "center"
     }, function($start,$end,$range){	
 			var $graphelem=this.element.attr("graph");
+			global_graph[$graphelem]={
+				"start" :$start
+				,"end"  :$end
+				,"range":$range
+			}
 			//Set Date Range Span Label
 			$("div.reportrange[graph="+$graphelem+"]>span").html(($range==="Custom Range")?$start.format('MMM YYYY') + ' to ' + $end.format('MMM YYYY'):$range);
 			//Set refresh graph

@@ -17,6 +17,7 @@ var client
 	,set_taxes
 	,set_iteminv
 	,set_modinv;	
+var global_graph={};
 $(function(){
 	//Set Keen JS Cliend Credentials
 	client = new Keen({
@@ -335,6 +336,8 @@ $(function(){
 		}					
 		//if $range is undefined then set it.		
 		$range=($range===undefined)?"Today":$range;
+		//Validation for last selected date.
+		$range=global_graph["#iteminv"]!==undefined?global_graph["#iteminv"]["range"]:$range;
 		//Set Graph Title.
 		iteminv.config.title="Item Sales " + $range;	
 		//Set Date Range Span Label	
@@ -346,7 +349,7 @@ $(function(){
 			filters: [{"operator":"eq","property_name":"user","property_value":$userpk}],
 			group_by:$goupby,
 			//timeframe: "this_1_days",
-			timeframe: $timeframe[$range],
+			timeframe: global_graph["#iteminv"]!==undefined?$timeframe[global_graph["#iteminv"]["range"]]:$timeframe[$range],
 			order_by: {
 			  'property_name': 'result',
 			  'direction': 'DESC'
@@ -377,6 +380,8 @@ $(function(){
 		}	
 		//if $range is undefined then set it.		
 		$range=($range===undefined)?"Today":$range;
+		//Validation for last selected date.
+		$range=global_graph["#modinv"]!==undefined?global_graph["#modinv"]["range"]:$range;
 		//Set Graph Title.
 		modinv.config.title="Modifier Sales " + $range;
 		//Set Date Range Span Label	
@@ -390,9 +395,8 @@ $(function(){
 			  order_by: {
 				'property_name': 'result',
 				'direction': 'DESC'
-			  },
-			  //timeframe: "this_1_days",
-			  timeframe: $timeframe[$range],
+			  },			  			  
+			  timeframe: global_graph["#modinv"]!==undefined?$timeframe[global_graph["#modinv"]["range"]]:$timeframe[$range],
 			  //timezone: "US/Eastern"
 			  timezone: $.cookie("timezone"),
 		  })
