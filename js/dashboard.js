@@ -1,7 +1,7 @@
 /*
  *@Author:     @Author
  *@Description:@Description
- *@Date:       @Date
+ *@Date:       27/11/2018
 */
 var $timeframe={
 	 "Today":"today"	
@@ -47,16 +47,29 @@ $(function(){
 		set_taxes();
 		set_iteminv();
 		set_modinv();
-	}
+	}	
+	//
+	console.log($.cookie("timezone"));
 	if($.cookie("timezone")===undefined)
 	{
 		//Set the time zone of the current location.
-		/*$.getJSON( "http://ip-api.com/json", function($data) {		
-			$.cookie("timezone", $data.timezone);
-			initAllGraph();			
-		});*/
-		$.cookie("timezone", "US/Eastern");
-		initAllGraph();	
+		$.ajax({
+		type: "GET",
+		url:"https://ipapi.co/timezone/",
+		success:function($data){
+			$.cookie("timezone", $data);
+			initAllGraph();	
+		},
+		error:function($object,$error,$message){
+			var date = new Date();
+			var minutes = 480;
+			date.setTime(date.getTime() + (minutes * 60 * 1000));
+			$.cookie("timezone", "US/Eastern",{ expires: date })			
+			console.log($error +": " + $message);
+			initAllGraph();
+		},
+		always:function($object,$info,$message){}
+		});
 	}		
 	else
 	{
@@ -94,7 +107,7 @@ $(function(){
 				,"range":$range
 			}
 			//Set Date Range Span Label
-			$("div.reportrange[graph="+$graphelem+"]>span").html(($range==="Custom Range")?$start.format('MMM YYYY') + ' to ' + $end.format('MMM YYYY'):$range);
+		   $("div.reportrange[graph="+$graphelem+"]>span").html(($range==="Custom Range")?$start.format('MMM YYYY') + ' to ' + $end.format('MMM YYYY'):$range);
 			//Set refresh graph
 			set_loading($graphelem);
 			//
