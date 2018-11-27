@@ -344,7 +344,7 @@ $(function(){
 		{
 			$start=global_graph["#iteminv"]["start"];
 		}
-		if($end===undefined && global_graph["#modinv"]!==undefined)
+		if($end===undefined && global_graph["#iteminv"]!==undefined)
 		{
 			$end=global_graph["#iteminv"]["end"];
 		}		
