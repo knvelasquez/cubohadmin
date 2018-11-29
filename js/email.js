@@ -59,6 +59,8 @@ $(function(){
 	//
 	email_weekly_sales=function($range){
 		$range=($range===undefined)?"7 Days":$range;
+		//Validation for last selected date.
+		$range=global_graph["#weekly_sales"]!==undefined?global_graph["#weekly_sales"]["range"]:$range;
 		client
 		  .query("extraction", {
 			  event_collection: "orders",
