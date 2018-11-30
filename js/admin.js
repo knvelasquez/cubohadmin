@@ -1,7 +1,7 @@
 /*
  *@Author:     @Author
- *@Description:@Description
- *@Date:       @Date
+ *@Description:Admin dasboard Graph
+ *@Date:       30/11/2018
 */
 //Set the Global variable Definitions.
 var client
@@ -16,7 +16,9 @@ var client
 	,set_average_order_value_per_platform
 	,set_taxes
 	,set_iteminv
-	,set_modinv;	
+	,set_modinv
+	,set_delivery_fees
+	,set_tips;
 var global_graph={};
 $(function(){
 	//Set Keen JS Cliend Credentials
@@ -47,7 +49,8 @@ $(function(){
 	set_revenue_today=function($start,$end,$range){
 		const revenuetoday = 'revenuetoday';
 		//if $range is undefined then set it.		
-		//$range=($range===undefined)?"Today":$range;
+		$range=($range===undefined)?"Today":$range;
+		$range=global_graph["#revenue_today"]!==undefined?global_graph["#revenue_today"]["range"]:$range;
 		//Set Graph Title.
 		revenue_today = new Keen.Dataviz()
 		.el("#revenue_today")
@@ -56,17 +59,14 @@ $(function(){
 		})
 		.type("metric")		
 		.prepare();  
-		revenue_today.config.title="Revenue Today";
-		//Set Date Range Span Label	
-		//$("div.reportrange[graph=#revenue_today]>span").html($range);	
-		//client request
+		revenue_today.config.title="Revenue "+$range;
+		$("#sprevenue").html($range);
 		client
 		  .query("sum", {
 			event_collection: "orders",
 			filters: [{"operator":"eq","property_name":"user","property_value":$userpk}],
 			target_property: "revenue",
-			timeframe: "this_1_days",
-			//timezone: "US/Eastern",
+			timeframe: global_graph["#revenue_today"]!==undefined?$timeframe[global_graph["#revenue_today"]["range"]]:$timeframe[$range],
 			timezone: $.cookie("timezone"),
 		  })
 		  .then(function(res) {
@@ -422,5 +422,85 @@ $(function(){
 		  .catch(function(err) {
 			modinv.message(err.message);
 		  });
-	};     
+	};  
+	/*
+	 *Delivery Fees
+	*/
+	var delivery_fees = new Keen.Dataviz()
+	.el("#delivery_fees")
+	.chartOptions({
+		prefix: '$'
+	})
+	.type("metric")
+	.prepare();  
+	//Set set_revenue_today fuction
+	set_delivery_fees=function($start,$end,$range){
+		//if $range is undefined then set it.		
+		$range=($range===undefined)?"Today":$range;
+		$range=global_graph["#delivery_fees"]!==undefined?global_graph["#delivery_fees"]["range"]:$range;
+		//Set Graph Title.
+		delivery_fees = new Keen.Dataviz()
+		.el("#delivery_fees")
+		.chartOptions({
+			prefix: '$'
+		})
+		.type("metric")		
+		.prepare();  
+		delivery_fees.config.title="Delivery "+$range;
+		$("#spdeliveryfee").html($range);
+		client
+		  .query("sum", {
+			event_collection: "orders",
+			filters: [{"operator":"eq","property_name":"user","property_value":$userpk}],
+			target_property: "deliveryfee",
+			timeframe: global_graph["#delivery_fees"]!==undefined?$timeframe[global_graph["#delivery_fees"]["range"]]:$timeframe[$range],
+			timezone: $.cookie("timezone"),
+		  })
+		  .then(function(res) {
+			delivery_fees.data(res).render();
+		  })
+		  .catch(function(err) {
+			delivery_fees.message(err.message);
+		  });
+	};
+	/*
+	 *Tips
+	*/
+	var tips = new Keen.Dataviz()
+	.el("#tips")
+	.chartOptions({
+		prefix: '$'
+	})
+	.type("metric")
+	.prepare();  
+	//Set set_revenue_today fuction
+	set_tips=function($start,$end,$range){
+		//if $range is undefined then set it.		
+		$range=($range===undefined)?"Today":$range;
+		$range=global_graph["#tips"]!==undefined?global_graph["#tips"]["range"]:$range;
+		//Set Graph Title.
+		tips = new Keen.Dataviz()
+		.el("#tips")
+		.chartOptions({
+			prefix: '$'
+		})
+		.type("metric")		
+		.prepare();  
+		tips.config.title="Tips "+$range;
+		$("#sptips").html($range);
+		client
+		  .query("sum", {
+			event_collection: "orders",
+			filters: [{"operator":"eq","property_name":"user","property_value":$userpk}],
+			target_property: "tips",
+			timeframe: global_graph["#tips"]!==undefined?$timeframe[global_graph["#tips"]["range"]]:$timeframe[$range],
+			timezone: $.cookie("timezone"),
+		  })
+		  .then(function(res) {
+			tips.data(res).render();
+		  })
+		  .catch(function(err) {
+			tips.message(err.message);
+		  });
+	};	
 });

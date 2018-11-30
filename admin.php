@@ -108,15 +108,65 @@ if(isset($_COOKIE['name']))
 		<div class="row">
 			<div class="col-sm-12 col-md-12">
 				<div class="chart-wrapper">
-					<div class="chart-title">Revenue Today
+					<div class="chart-title">
+						Revenue (<span id="sprevenue"></span>)
 						<div style="float: right;margin-top: -3px;margin-left: 3px;" graph_call="email_revenue_today">
 							<a href="#" data-toggle="modal" data-target="#csvModal" style="text-decoration-line: none;">
 								<span class="mrp-icon" style="border-radius: 5px 5px 5px 5px;font-size: 11px;font-weight: bold;">CSV</span>	
 							</a>
 						</div>
+						<!--DateRange-->
+						<div style="float:right;margin-top:-2px">
+							<div style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%;display: inline;" graph="#revenue_today" graph_call="set_revenue_today" class="reportrange">
+								<i class="fa fa-calendar"></i>&nbsp;
+								<span></span>
+							</div>				
+						</div>
 					</div>
 					<div class="chart-stage" id="revenue_today"></div>
 					<div class="chart-notes">This is how much money you earned today.</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12">
+				<div class="chart-wrapper">
+					<div class="chart-title">
+						Delivery Fees (<span id="spdeliveryfee"></span>)
+						<!--<div style="float: right;margin-top: -3px;margin-left: 3px;" graph_call="email_delivery_fee">
+							<a href="#" data-toggle="modal" data-target="#csvModal" style="text-decoration-line: none;">
+								<span class="mrp-icon" style="border-radius: 5px 5px 5px 5px;font-size: 11px;font-weight: bold;">CSV</span>	
+							</a>
+						</div>-->
+						<!--DateRange-->
+						<div style="float:right;margin-top:-2px">
+							<div style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%;display: inline;" graph="#delivery_fees" graph_call="set_delivery_fees" class="reportrange">
+								<i class="fa fa-calendar"></i>&nbsp;
+								<span></span>
+							</div>				
+						</div>
+					</div>
+					<div class="chart-stage" id="delivery_fees"></div>
+					<div class="chart-notes">Description.</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12">
+				<div class="chart-wrapper">
+					<div class="chart-title">
+						Tips (<span id="sptips"></span>)
+						<!--<div style="float: right;margin-top: -3px;margin-left: 3px;" graph_call="email_delivery_fee">
+							<a href="#" data-toggle="modal" data-target="#csvModal" style="text-decoration-line: none;">
+								<span class="mrp-icon" style="border-radius: 5px 5px 5px 5px;font-size: 11px;font-weight: bold;">CSV</span>	
+							</a>
+						</div>-->
+						<!--DateRange-->
+						<div style="float:right;margin-top:-2px">
+							<div style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%;display: inline;" graph="#tips" graph_call="set_tips" class="reportrange">
+								<i class="fa fa-calendar"></i>&nbsp;
+								<span></span>
+							</div>				
+						</div>
+					</div>
+					<div class="chart-stage" id="tips"></div>
+					<div class="chart-notes">Description.</div>
 				</div>
 			</div>
 			<div class="col-sm-12 col-md-12">

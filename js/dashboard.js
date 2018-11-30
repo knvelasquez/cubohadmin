@@ -47,6 +47,8 @@ $(function(){
 		set_taxes();
 		set_iteminv();
 		set_modinv();
+		set_delivery_fees();
+		set_tips();
 	}	
 	//
 	console.log($.cookie("timezone"));
