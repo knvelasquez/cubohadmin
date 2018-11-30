@@ -492,7 +492,7 @@ $(function(){
 		  .query("sum", {
 			event_collection: "orders",
 			filters: [{"operator":"eq","property_name":"user","property_value":$userpk}],
-			target_property: "tips",
+			target_property: "tip",
 			timeframe: global_graph["#tips"]!==undefined?$timeframe[global_graph["#tips"]["range"]]:$timeframe[$range],
 			timezone: $.cookie("timezone"),
 		  })
