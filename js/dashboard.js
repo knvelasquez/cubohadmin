@@ -1,12 +1,15 @@
 /*
  *@Author:     @Author
  *@Description:@Description
- *@Date:       27/11/2018
+ *@Date:       04/12/2018
 */
 var $timeframe={
 	 "Today":"today"	
-	,"Yesterday":"previous_1_days"	
-	,"Last 7 Days":"this_1_weeks"			
+	,"Yesterday":"previous_1_days"		
+	,"Last 7 Days":{
+		"start":null,
+		"end":null
+	}			
 	,"This Month":"this_1_months"	
 	,"Last Month":"previous_1_months"	
 	,"This Year":"this_1_years"
@@ -98,8 +101,8 @@ $(function(){
 		},
 		"linkedCalendars": false,
 		"alwaysShowCalendars": true,
-		"startDate": moment().subtract(29, 'days'),
-		"endDate": moment(),
+		"startDate": moment(),
+		"endDate": moment().subtract(0, 'days'),
 		//"opens": "center"
     }, function($start,$end,$range){	
 			var $graphelem=this.element.attr("graph");
@@ -117,7 +120,12 @@ $(function(){
 			{
 				$timeframe[$range]["start"]=$start.format('YYYY-MM-DDT00:00:00');
 				$timeframe[$range]["end"]=$end.format('YYYY-MM-DDT00:00:00');
-			}				
+			}
+			if($range==="Last 7 Days")
+			{
+				$timeframe[$range]["start"]=moment().subtract(7, 'days').format('YYYY-MM-DDT00:00:00');
+				$timeframe[$range]["end"]=moment().format('YYYY-MM-DDT00:00:00');				
+			}			
 			if (typeof window[this.element.attr("graph_call")] === "function") 
 			{
 				window[this.element.attr("graph_call")]($start,$end,$range);
