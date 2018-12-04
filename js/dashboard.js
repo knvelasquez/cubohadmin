@@ -60,7 +60,7 @@ $(function(){
 		//Set the time zone of the current location.
 		$.ajax({
 		type: "GET",
-		url:"https://ipapi.co/timezone/",
+		url:"zhttps://ipapi.co/timezone/",
 		success:function($data){
 			$.cookie("timezone", $data);
 			initAllGraph();	
@@ -69,7 +69,7 @@ $(function(){
 			var date = new Date();
 			var minutes = 480;
 			date.setTime(date.getTime() + (minutes * 60 * 1000));
-			$.cookie("timezone", "US/Eastern",{ expires: date })			
+			$.cookie("timezone", "US/Pacific",{ expires: date })			
 			console.log($error +": " + $message);
 			initAllGraph();
 		},
