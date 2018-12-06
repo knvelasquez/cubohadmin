@@ -40,7 +40,7 @@ $(function(){
 	// Revenue Today
 	var revenue_today = new Keen.Dataviz()
 	.el("#revenue_today")
-	.chartOptions({
+	.chartOptions({		
 		prefix: '$'
 	})
 	.type("metric")
@@ -55,6 +55,7 @@ $(function(){
 		revenue_today = new Keen.Dataviz()
 		.el("#revenue_today")
 		.chartOptions({
+			decimal: 2,
 			prefix: '$'
 		})
 		.type("metric")		
@@ -69,11 +70,11 @@ $(function(){
 			timeframe: global_graph["#revenue_today"]!==undefined?$timeframe[global_graph["#revenue_today"]["range"]]:$timeframe[$range],
 			timezone: $.cookie("timezone"),
 		  })
-		  .then(function(res) {
-			revenue_today.data(res).render();
+		  .then(function(res) {		
+				revenue_today.data(res).render();
 		  })
 		  .catch(function(err) {
-			revenue_today.message(err.message);
+				revenue_today.message(err.message);
 		  });
 	};
 	// Weekly Sales
@@ -428,7 +429,7 @@ $(function(){
 	*/
 	var delivery_fees = new Keen.Dataviz()
 	.el("#delivery_fees")
-	.chartOptions({
+	.chartOptions({		
 		prefix: '$'
 	})
 	.type("metric")
@@ -437,7 +438,7 @@ $(function(){
 	set_delivery_fees=function($start,$end,$range){
 		//if $range is undefined then set it.		
 		$range=($range===undefined)?"Today":$range;
-		$range=global_graph["#delivery_fees"]!==undefined?global_graph["#delivery_fees"]["range"]:$range;
+		$range=global_graph["#delivery_fees"]!==undefined?global_graph["#delivery_fees"]["range"]:$range;		
 		//Set Graph Title.
 		delivery_fees = new Keen.Dataviz()
 		.el("#delivery_fees")

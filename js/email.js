@@ -1,14 +1,14 @@
-/*
- *@Author:     @Author
- *@Description:@Email function Description
- *@Date:       @Date
+/**
+ *@Author:      @author
+ *@Description: Extractions to csv file and sending email.
+ *@Date:        06/12/2018
 */
 //Set the Global variable Definitions.
 var email_send
 	,$graphcall
 	,email_weekly_sales;
 $(function(){	
-	/*
+	/**
 	 *Email send function
 	*/
 	email_send=function(){
@@ -29,7 +29,6 @@ $(function(){
 		window[$graphcall]();
 	}
 	$('#csvModal').on('shown.bs.modal',function($elem){
-		//
 		var $userEmail=function(){
 			return $.cookie("user_email");
 		}
@@ -37,17 +36,19 @@ $(function(){
 		//Set the graph email invok.
 		$graphcall=$($elem.relatedTarget).parent().attr("graph_call");				
 	});
-	//
+	/**
+	 *cvs extraction for revenue today
+	*/
 	email_revenue_today=function(){		
 		client
 		  .query("extraction", {
 			event_collection: "orders",
 			email: $.cookie("user_email"),
-			timezone: "US/Eastern",
+			timezone: $.cookie("timezone"),
 			//
 			filters: [{"operator":"eq","property_name":"user","property_value":$userpk}],
 			target_property: "revenue",
-			timeframe: "this_1_days"			
+			timeframe: global_graph["#revenue_today"]!==undefined?$timeframe[global_graph["#revenue_today"]["range"]]:$timeframe[$range]			
 		  })
 		  .then(function($res) {
 			console.log($res);
@@ -56,7 +57,9 @@ $(function(){
 			console.log($err);
 		  });
 	};
-	//
+	/**
+	 *csv extraction for weekly sales
+	*/
 	email_weekly_sales=function($range){
 		$range=($range===undefined)?"7 Days":$range;
 		//Validation for last selected date.
@@ -69,8 +72,8 @@ $(function(){
 			  filters: [{"operator":"eq","property_name":"user","property_value":$userpk}],
 			  interval: "daily",
 			  target_property: "revenue",			  
-			  timeframe: $timeframe[$range],
-			  timezone: "US/Eastern"
+			  timeframe: global_graph["#weekly_sales"]!==undefined?$timeframe[global_graph["#weekly_sales"]["range"]]:$timeframe[$range],
+			  timezone: $.cookie("timezone")
 		  })
 		  .then(function(res) {
 			console.log($res);
@@ -79,7 +82,9 @@ $(function(){
 			console.log($err);
 		  }); 
 	};
-	//
+	/**
+	 *csv extraction for orders per week
+	*/
 	email_orders_per_week=function($range){
 		//	
 		$range=($range===undefined)?"Last 4 Weeks":$range;	
@@ -90,8 +95,8 @@ $(function(){
 			//
 			filters: [{"operator":"eq","property_name":"user","property_value":$userpk}],
 			interval: "weekly",
-			timeframe: $timeframe[$range],
-			timezone: "US/Eastern"
+			timeframe: global_graph["#orders_per_week"]!==undefined?$timeframe[global_graph["#orders_per_week"]["range"]]:$timeframe[$range],
+			timezone: $.cookie("timezone")
 		  })
 		  .then(function($res) {
 				console.log($res);
@@ -100,7 +105,9 @@ $(function(){
 				console.log($err);
 		  });		
 	};
-	//
+	/**
+	 *csv daily sales per platform
+	*/
 	email_daily_sales_per_platform=function($range){
 		//		
 		$range=($range===undefined)?"7 Days":$range;
@@ -111,8 +118,8 @@ $(function(){
 			  //
 			  filters: [{"operator":"eq","property_name":"user","property_value":$userpk}],
 			  group_by: "app",
-			  timeframe: $timeframe[$range],
-			  timezone: "US/Eastern"
+			  timeframe: global_graph["#daily_sales_per_platform"]!==undefined?$timeframe[global_graph["#daily_sales_per_platform"]["range"]]:$timeframe[$range],
+			  timezone: $.cookie("timezone")
 		  })
 		  .then(function($res) {
 				console.log($res);
@@ -121,7 +128,9 @@ $(function(){
 				console.log($err);
 		  });
 	};
-	//
+	/**
+	 *csv for taxes
+	*/
 	email_taxes=function($range){	
 		//
 		$range=($range===undefined)?"Last 1 Year":$range;
@@ -134,8 +143,8 @@ $(function(){
 			  filters: [{"operator":"eq","property_name":"user","property_value":$userpk}],
 			  interval: "monthly",
 			  target_property: "tax",
-			  timeframe: $timeframe[$range],
-			  timezone: "US/Eastern"
+			  timeframe: global_graph["#taxes"]!==undefined?$timeframe[global_graph["#taxes"]["range"]]:$timeframe[$range],
+			  timezone: $.cookie("timezone")
 		  })
 		  .then(function($res) {
 				console.log($res);
@@ -144,7 +153,9 @@ $(function(){
 				console.log($err);
 		  });
 	};
-	//
+	/**
+	 *csv for item inv
+	*/
 	email_iteminv=function($range,$type){
 		//Set the type graph
 		var $goupby=["item"];		
@@ -161,12 +172,12 @@ $(function(){
 			//
 			filters: [{"operator":"eq","property_name":"user","property_value":$userpk}],
 			group_by:$goupby,
-			timeframe: $timeframe[$range],
+			timeframe: global_graph["#iteminv"]!==undefined?$timeframe[global_graph["#iteminv"]["range"]]:$timeframe[$range],
 			order_by: {
 			  'property_name': 'result',
 			  'direction': 'DESC'
 			},
-			timezone: "US/Pacific"
+			timezone: $.cookie("timezone")
 		  })
 		  .then(function($res) {
 				console.log($res);
@@ -175,7 +186,9 @@ $(function(){
 				console.log($err);
 		  });
 	};
-	//
+	/**
+	 *csv for mod inv
+	*/
 	email_modinv=function($range,$type){
 		//Set the type graph
 		var $goupby=["subitem"];
@@ -196,8 +209,8 @@ $(function(){
 				'property_name': 'result',
 				'direction': 'DESC'
 			  },			  
-			  timeframe: $timeframe[$range],
-			  timezone: "US/Eastern"
+			  timeframe: global_graph["#modinv"]!==undefined?$timeframe[global_graph["#modinv"]["range"]]:$timeframe[$range],
+			  timezone: $.cookie("timezone")
 		  })
 		  .then(function($res) {
 				console.log($res);
