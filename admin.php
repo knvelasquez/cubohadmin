@@ -20,6 +20,7 @@ if(isset($_COOKIE['name']))
 		<meta charset="utf-8">
 		<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
 		<title>Cuboh Admin Panel</title>
+		<link rel="icon" href="img/icon.ico" type="image/x-icon" />
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
 		<!-- Dashboard -->
 		<link rel="stylesheet" type="text/css" href="cdn.php?file=keen_dataviz_2_0_4_min_css.css"/>    
