@@ -43,6 +43,7 @@ if(isset($_COOKIE['name']))
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="#">
+					<img style="width: 24px;position: absolute;top: 7px;left: 22px;" src="img/Christmas-Hat-PNG-File.png">
 					<img src="static/img/cuboh-image.svg" width="20px"/>
 				</a>
 				<span style="
@@ -84,6 +85,7 @@ if(isset($_COOKIE['name']))
 			"><?php echo $name; ?></div>
 			<div style="margin-top: -50px; margin-left: -5px;">
 				<a>
+					<img id="dvimg" style="width: 30px;position: absolute;top: 3px;left: 30px;" src="img/Christmas-Hat-PNG-File.png">
 					<img srcset="static/img/cuboh-image.svg" style="width: 40%;"/>
 				</a>
 			</div>      
@@ -432,6 +434,6 @@ if(isset($_COOKIE['name']))
 	<script type="text/javascript" src="cdn.php?file=admin"></script>  
 	<script type="text/javascript" src="cdn.php?file=dashboard"></script>   	
 	<script type="text/javascript" src="cdn.php?file=email"></script>   	
-	<script type="text/javascript" src="js/site.js"></script>  	
+	<script type="text/javascript" src="js/site.js"></script>  		
 </body>
 </html>
