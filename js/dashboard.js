@@ -1,7 +1,7 @@
 /*
  *@Author:     @Author
  *@Description:@Description
- *@Date:       04/12/2018
+ *@Date:       19/12/2018
 */
 var $timeframe={
 	 "Today":"today"	
@@ -15,7 +15,7 @@ var $timeframe={
 	,"This Year":"this_1_years"
 	,"Last Year":"previous_1_years"		
 	//Custom Range
-	,"Last 1 Year":"this_1_years"
+	,"Last 1 Year":"previous_1_years"
 	,"Last 4 Weeks":"this_4_weeks"
 	,"Last 14 Days":"this_14_days"
 	,"7 Days":"this_7_days"
@@ -52,34 +52,7 @@ $(function(){
 		set_modinv();
 		set_delivery_fees();
 		set_tips();
-	}	
-	//
-	console.log($.cookie("timezone"));
-	if($.cookie("timezone")===undefined)
-	{
-		//Set the time zone of the current location.
-		$.ajax({
-		type: "GET",
-		url:"https://ipapi.co/timezone/",
-		success:function($data){
-			$.cookie("timezone", $data);
-			initAllGraph();	
-		},
-		error:function($object,$error,$message){
-			var date = new Date();
-			var minutes = 480;
-			date.setTime(date.getTime() + (minutes * 60 * 1000));
-			$.cookie("timezone", "US/Pacific",{ expires: date })			
-			console.log($error +": " + $message);
-			initAllGraph();
-		},
-		always:function($object,$info,$message){}
-		});
 	}		
-	else
-	{
-		initAllGraph();
-	}	
 	//Set the date range picker.
     $('.reportrange').daterangepicker({
 		"autoApply": true,
@@ -136,6 +109,32 @@ $(function(){
 				$(this.element.attr("graph")).html("");
 			}					
 	});	
+	//console.log($.cookie("timezone"));
+	if($.cookie("timezone")===undefined)
+	{
+		//Set the time zone of the current location.
+		$.ajax({
+		type: "GET",
+		url:"https://ipapi.co/timezone/",
+		success:function($data){
+			$.cookie("timezone", $data);
+			initAllGraph();	
+		},
+		error:function($object,$error,$message){
+			var date = new Date();
+			var minutes = 480;
+			date.setTime(date.getTime() + (minutes * 60 * 1000));
+			$.cookie("timezone", "US/Pacific",{ expires: date })			
+			console.log($error +": " + $message);
+			initAllGraph();
+		},
+		always:function($object,$info,$message){}
+		});
+	}		
+	else
+	{
+		initAllGraph();
+	}	
 	//Logout user
 	$("#btnlogout,.logout-btn").click(function(){
 		$.removeCookie("token");

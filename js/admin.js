@@ -89,6 +89,11 @@ $(function(){
 	{
 		//if $range is undefined then set it.		
 		$range=($range===undefined)?"7 Days":$range;
+		if($range==="7 Days")
+		{
+			$("div.reportrange[graph=#weekly_sales]").data("daterangepicker").startDate = moment(moment().subtract(6, 'days').format('YYYY-MM-DD'));
+			$("div.reportrange[graph=#weekly_sales]").data("daterangepicker").endDate   = moment(moment().subtract(0, 'days').format('YYYY-MM-DD'));
+		}
 		//Set Graph Title.
 		weekly_sales.config.title="Revenue for " + $range;
 		//Set Date Range Span Label	
@@ -123,6 +128,11 @@ $(function(){
 	set_orders_per_week=function($start,$end,$range){
 		//if $range is undefined then set it.		
 		$range=($range===undefined)?"Last 4 Weeks":$range;
+		if($range==="Last 4 Weeks")
+		{
+			$(".reportrange[graph=#orders_per_week]").data("daterangepicker").startDate = moment(moment().subtract(28, 'days').format('YYYY-MM-DD'));
+			$(".reportrange[graph=#orders_per_week]").data("daterangepicker").endDate   = moment(moment().subtract(0, 'days').format('YYYY-MM-DD'));
+		}
 		//Set Graph Title.
 		orders_per_week.config.title="Number of Orders For " + ($range);	
 		//Set Date Range Span Label			
@@ -152,9 +162,14 @@ $(function(){
       .type("piechart")
       .prepare();
 	const salespersource = 'salespersource';
-	set_sales_per_source=function($start,$end,$range){
+	set_sales_per_source=function($start,$end,$range){								
 		//if $range is undefined then set it.		
 		$range=($range===undefined)?"7 Days":$range;
+		if($range==="7 Days")
+		{
+			$(".reportrange[graph=#sales_per_source]").data("daterangepicker").startDate = moment(moment().subtract(6, 'days').format('YYYY-MM-DD'));
+			$(".reportrange[graph=#sales_per_source]").data("daterangepicker").endDate   = moment(moment().subtract(0, 'days').format('YYYY-MM-DD'));
+		}
 		//Set Graph Title.
 		sales_per_source.config.title="Breakdown of Sales Per Source (" + $range +")";	
 		//Set Date Range Span Label	
@@ -196,6 +211,11 @@ $(function(){
 		
 		//if $range is undefined then set it.		
 		$range=($range===undefined)?"7 Days":$range;
+		if($range==="7 Days")
+		{
+			$(".reportrange[graph=#daily_sales_per_platform]").data("daterangepicker").startDate = moment(moment().subtract(6, 'days').format('YYYY-MM-DD'));
+			$(".reportrange[graph=#daily_sales_per_platform]").data("daterangepicker").endDate   = moment(moment().subtract(0, 'days').format('YYYY-MM-DD'));
+		}
 		//Set Graph Title.
 		daily_sales_per_platform.config.title="Revenue Per Platform " + $range;	
 		//Set Date Range Span Label	
@@ -231,6 +251,11 @@ $(function(){
 	set_average_order_value=function($start,$end,$range){
 		//if $range is undefined then set it.
 		$range=($range===undefined)?"This Month":$range;
+		if($range==="This Month")
+		{
+			$(".reportrange[graph=#average_order_value]").data("daterangepicker").startDate = moment(moment().startOf('month').format('YYYY-MM-DD'));
+			$(".reportrange[graph=#average_order_value]").data("daterangepicker").endDate   = moment(moment().endOf('month').format('YYYY-MM-DD'));
+		}
 		//Set Graph Title.
 		average_order_value.config.title="Average Order Value For " + $range;
 		//Set Date Range Span Label	
@@ -264,6 +289,11 @@ $(function(){
 	set_average_order_value_per_platform=function($start,$end,$range){
 		//if $range is undefined then set it.		
 		$range=($range===undefined)?"Last 14 Days":$range;
+		if($range==="Last 14 Days")
+		{
+			$(".reportrange[graph=#average_order_value_per_platform]").data("daterangepicker").startDate = moment(moment().subtract(14, 'days').format('YYYY-MM-DD'));
+			$(".reportrange[graph=#average_order_value_per_platform]").data("daterangepicker").endDate   = moment(moment().subtract(0, 'days').format('YYYY-MM-DD'));
+		}
 		//Set Graph Title.
 		average_order_value_per_platform.config.title="Average Order Value Per Platform For " + $range;	
 		//Set Date Range Span Label	
@@ -298,6 +328,11 @@ $(function(){
 	set_taxes=function($start,$end,$range){
 		//if $range is undefined then set it.		
 		$range=($range===undefined)?"Last 1 Year":$range;
+		if($range==="Last 1 Year" || $range==="Last Year")
+		{
+			$(".reportrange[graph=#taxes]").data("daterangepicker").startDate = moment(moment().subtract(1, 'year').startOf('year').format('YYYY-MM-DD'));
+			$(".reportrange[graph=#taxes]").data("daterangepicker").endDate   = moment(moment().subtract(1, 'year').endOf('year').format('YYYY-MM-DD'));
+		}
 		//Set Graph Title.
 		taxes.config.title="Monthly Taxes Paid For " + $range;	
 		//Set Date Range Span Label	
