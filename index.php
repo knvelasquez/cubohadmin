@@ -1,5 +1,5 @@
 <?php
-header('Location: https://cubohadminv2.herokuapp.com/');
+header('Location: https://cubohadmin.herokuapp.com/');
 /*
  *Validate if user has session
 */
