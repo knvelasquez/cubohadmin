@@ -1,7 +1,7 @@
 /*
  *@Author:     @Author
  *@Description:Admin dasboard Graph
- *@Date:       30/11/2018
+ *@Date:       18/05/2019
 */
 //Set the Global variable Definitions.
 var client
@@ -126,26 +126,47 @@ $(function(){
 	const ordersperweek = 'ordersperweek';
 	//Set set_orders_per_week function
 	set_orders_per_week=function($start,$end,$range){
+		$interval="daily";		
 		//if $range is undefined then set it.		
 		$range=($range===undefined)?"Last 4 Weeks":$range;
 		if($range==="Last 4 Weeks")
 		{
 			$(".reportrange[graph=#orders_per_week]").data("daterangepicker").startDate = moment(moment().subtract(28, 'days').format('YYYY-MM-DD'));
-			$(".reportrange[graph=#orders_per_week]").data("daterangepicker").endDate   = moment(moment().subtract(0, 'days').format('YYYY-MM-DD'));
+			$(".reportrange[graph=#orders_per_week]").data("daterangepicker").endDate   = moment(moment().subtract(0, 'days').format('YYYY-MM-DD'));		
+			$interval="weekly";
+		}			
+		if($range==="This Month" || $range==="Last Month")	
+		{
+			$interval="weekly";
+		}			
+		if($range==="This Year" || $range==="Last Year")	
+		{
+			$interval="monthly";
+		}
+		if($range==="Custom Range")	
+		{
+			$interval="monthly";
+			if(moment($timeframe[$range]["end"]).diff(moment($timeframe[$range]["start"]), 'days')<=15)
+			{
+				$interval="daily";				
+			}
+			else if(moment($timeframe[$range]["end"]).diff(moment($timeframe[$range]["start"]), 'days')<=30)
+			{
+				$interval="weekly";	
+			}			
 		}
 		//Set Graph Title.
-		orders_per_week.config.title="Number of Orders For " + ($range);	
+		orders_per_week.config.title="Number of Orders For " + ($range) +" <b style='font-size:9px'>("+$interval+")</b>";	
 		//Set Date Range Span Label			
-		$("div.reportrange[graph=#orders_per_week]>span").html(($range!=="Custom Range")?$range:$start.format('YYYY-MM-DD') +" - " + $end.format('YYYY-MM-DD'));			
-		//client request
+		$("div.reportrange[graph=#orders_per_week]>span").html(($range!=="Custom Range")?$range:$start.format('YYYY-MM-DD') +" - " + $end.format('YYYY-MM-DD'));					
 		client
 		  .query("count", {
 			event_collection: "orders",
-			filters: [{"operator":"eq","property_name":"user","property_value":$userpk}],
-			interval: "weekly",
-			//timeframe: "this_4_weeks",
-			timeframe: $timeframe[$range],
-			//timezone: "US/Eastern",
+			filters: [{"operator":"eq",
+					   "property_name":"user",
+					   "property_value":$userpk}],
+			interval: $interval,							
+			timeframe: $timeframe[$range],			
 			timezone: $.cookie("timezone"),
 		  })
 		  .then(function(res) {
@@ -326,34 +347,54 @@ $(function(){
 	const taxes_monthly = 'taxes_monthly';
 	//SET set_taxes function
 	set_taxes=function($start,$end,$range){
-		//if $range is undefined then set it.		
+		$interval="daily";			
 		$range=($range===undefined)?"Last 1 Year":$range;
 		if($range==="Last 1 Year" || $range==="Last Year")
 		{
 			$(".reportrange[graph=#taxes]").data("daterangepicker").startDate = moment(moment().subtract(1, 'year').startOf('year').format('YYYY-MM-DD'));
 			$(".reportrange[graph=#taxes]").data("daterangepicker").endDate   = moment(moment().subtract(1, 'year').endOf('year').format('YYYY-MM-DD'));
+			$interval="weekly";
+		}
+		if($range==="This Month" || $range==="Last Month")	
+		{
+			$interval="weekly";
+		}			
+		if($range==="This Year" || $range==="Last Year")	
+		{
+			$interval="monthly";
+		}
+		if($range==="Custom Range")	
+		{
+			$interval="monthly";
+			if(moment($timeframe[$range]["end"]).diff(moment($timeframe[$range]["start"]), 'days')<=15)
+			{
+				$interval="daily";				
+			}
+			else if(moment($timeframe[$range]["end"]).diff(moment($timeframe[$range]["start"]), 'days')<=30)
+			{
+				$interval="weekly";	
+			}			
 		}
 		//Set Graph Title.
-		taxes.config.title="Monthly Taxes Paid For " + $range;	
+		taxes.config.title="Monthly Taxes Paid For " + $range +" <b style='font-size:9px'>("+$interval+")</b>";	;	
 		//Set Date Range Span Label	
 		$("div.reportrange[graph=#taxes]>span").html(($range!=="Custom Range")?$range:$start.format('YYYY-MM-DD') +" - " + $end.format('YYYY-MM-DD'));
-		//client request
 		client
 		  .query("sum", {
 			  event_collection: "orders",
-			  filters: [{"operator":"eq","property_name":"user","property_value":$userpk}],
-			  interval: "monthly",
-			  target_property: "tax",
-			  //timeframe: "this_1_years",
-			  timeframe: $timeframe[$range],
-			  //timezone: "US/Eastern",
+			  filters: [{"operator":"eq",
+						 "property_name":"user",
+						 "property_value":$userpk}],
+			  interval: $interval,
+			  target_property: "tax",			  
+			  timeframe: $timeframe[$range],			  
 			  timezone: $.cookie("timezone"),
 		  })
 		  .then(function(res) {
-			taxes.data(res).render();
+				taxes.data(res).render();
 		  })
 		  .catch(function(err) {
-			taxes.message(err.message);
+				taxes.message(err.message);
 		  });
 	};
 	//Inventory Sales
