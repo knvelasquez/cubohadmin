@@ -40,6 +40,8 @@ $(function(){
 	 *cvs extraction for revenue today
 	*/
 	email_revenue_today=function(){		
+		//if $range is undefined then set it.		
+		var $range="Today";
 		client
 		  .query("extraction", {
 			event_collection: "orders",
