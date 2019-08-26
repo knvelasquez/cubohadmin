@@ -32,7 +32,7 @@ $files = array(
 	/*jQuery Multi-select*/
 	,'multiselect_css'=>'css/jquery.multiselect.css'	
 	,'multiselect_js'=>'js/jquery.multiselect.js'
-	,'multiselect_init_js'=>'js/jquery.multiselect.init.js'
+	,'multiselect_init'=>'js/jquery.multiselect.init.js'
 );
 //echo $_GET['file']==='admin';
 if(isset($files[$_GET['file']]))

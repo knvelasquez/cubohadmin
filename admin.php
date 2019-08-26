@@ -111,16 +111,14 @@ if(isset($_COOKIE['name']))
 	</nav>
 	<div id="dvbodygraph">
 		<div class="row">
-			<div class="col-lg-12">
-				<div class="">       
-					<select name="langOpt[]" multiple id="langOpt">
-						<option value="226">Greenpoint</option>			
-						<option value="227">Greenwood</option>			
-						<option value="229">Lenox Square</option>			
-						<option value="213">Williamsburg</option>			
-						<option value="228">Worth Street</option>			
-					</select>                 
-				</div>
+			<div class="col-lg-12" style="display:none">				    
+				<select name="langOpt[]" multiple id="langOpt">
+					<option value="226">Greenpoint</option>			
+					<option value="227">Greenwood</option>			
+					<option value="229">Lenox Square</option>			
+					<option value="213">Williamsburg</option>			
+					<option value="228">Worth Street</option>			
+				</select>				
 			</div>
 			
 			<div class="col-sm-12 col-md-12">
@@ -451,6 +449,6 @@ if(isset($_COOKIE['name']))
 	<script type="text/javascript" src="js/site.js"></script>
 	<!--jQuery Multi-Select-->
 	<script type="text/javascript" src="cdn.php?file=multiselect_js"></script>
-	<script type="text/javascript" src="cdn.php?file=multiselect_init_js"></script>
+	<script type="text/javascript" src="cdn.php?file=multiselect_init"></script>
 </body>
 </html>

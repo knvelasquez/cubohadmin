@@ -35,4 +35,5 @@ $(function(){
 			  });
 		} 
 	});
+	$('#langOpt').parent().show();
 });
