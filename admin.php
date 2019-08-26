@@ -20,6 +20,7 @@ if(isset($_COOKIE['name']))
 		<meta charset="utf-8">
 		<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
 		<title>Cuboh Admin Panel</title>
+		<link rel="icon" href="img/icon.ico" type="image/x-icon" />
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
 		<!-- Dashboard -->
 		<link rel="stylesheet" type="text/css" href="cdn.php?file=keen_dataviz_2_0_4_min_css.css"/>    
@@ -28,7 +29,9 @@ if(isset($_COOKIE['name']))
 		<!--Bootstrap-->
 		<link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.min.css"/>
 		<!--Date Range Picker-->
-		<link rel="stylesheet" type="text/css" href="daterangepicker/daterangepicker.css"/>        
+		<link rel="stylesheet" type="text/css" href="daterangepicker/daterangepicker.css"/>
+		<!-- jQuery Multi-Select-->
+		<link rel="stylesheet" type="text/css" href="css/jquery.multiselect.css"/>
 	</head>
 <body class="keen-dashboard" style="padding-top: 0px;">
 	<nav id="dvnavhorizontal" class="navbar navbar-default navbar-fixed-top" style="display: none;background-color: #4651FF;border-color: #4651FF;">
@@ -42,6 +45,7 @@ if(isset($_COOKIE['name']))
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="#">
+					<!--<img style="width: 24px;position: absolute;top: 7px;left: 22px;" src="img/Christmas-Hat-PNG-File.png">-->
 					<img src="static/img/cuboh-image.svg" width="20px"/>
 				</a>
 				<span style="
@@ -83,6 +87,7 @@ if(isset($_COOKIE['name']))
 			"><?php echo $name; ?></div>
 			<div style="margin-top: -50px; margin-left: -5px;">
 				<a>
+					<!--<img id="dvimg" style="width: 30px;position: absolute;top: 3px;left: 30px;" src="img/Christmas-Hat-PNG-File.png">-->
 					<img srcset="static/img/cuboh-image.svg" style="width: 40%;"/>
 				</a>
 			</div>      
@@ -106,17 +111,79 @@ if(isset($_COOKIE['name']))
 	</nav>
 	<div id="dvbodygraph">
 		<div class="row">
+			<div class="col-lg-12">
+				<div class="">       
+					<select name="langOpt[]" multiple id="langOpt">
+						<option value="226">Greenpoint</option>			
+						<option value="227">Greenwood</option>			
+						<option value="229">Lenox Square</option>			
+						<option value="213">Williamsburg</option>			
+						<option value="228">Worth Street</option>			
+					</select>                 
+				</div>
+			</div>
+			
 			<div class="col-sm-12 col-md-12">
 				<div class="chart-wrapper">
-					<div class="chart-title">Revenue Today
+					<div class="chart-title">
+						Revenue (<span id="sprevenue"></span>)
 						<div style="float: right;margin-top: -3px;margin-left: 3px;" graph_call="email_revenue_today">
 							<a href="#" data-toggle="modal" data-target="#csvModal" style="text-decoration-line: none;">
 								<span class="mrp-icon" style="border-radius: 5px 5px 5px 5px;font-size: 11px;font-weight: bold;">CSV</span>	
 							</a>
 						</div>
+						<!--DateRange-->
+						<div style="float:right;margin-top:-2px">
+							<div style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%;display: inline;" graph="#revenue_today" graph_call="set_revenue_today" class="reportrange">
+								<i class="fa fa-calendar"></i>&nbsp;
+								<span></span>
+							</div>				
+						</div>
 					</div>
 					<div class="chart-stage" id="revenue_today"></div>
 					<div class="chart-notes">This is how much money you earned today.</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12">
+				<div class="chart-wrapper">
+					<div class="chart-title">
+						Delivery Fees (<span id="spdeliveryfee"></span>)
+						<!--<div style="float: right;margin-top: -3px;margin-left: 3px;" graph_call="email_delivery_fee">
+							<a href="#" data-toggle="modal" data-target="#csvModal" style="text-decoration-line: none;">
+								<span class="mrp-icon" style="border-radius: 5px 5px 5px 5px;font-size: 11px;font-weight: bold;">CSV</span>	
+							</a>
+						</div>-->
+						<!--DateRange-->
+						<div style="float:right;margin-top:-2px">
+							<div style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%;display: inline;" graph="#delivery_fees" graph_call="set_delivery_fees" class="reportrange">
+								<i class="fa fa-calendar"></i>&nbsp;
+								<span></span>
+							</div>				
+						</div>
+					</div>
+					<div class="chart-stage" id="delivery_fees"></div>
+					<div class="chart-notes">Description.</div>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12">
+				<div class="chart-wrapper">
+					<div class="chart-title">
+						Tips (<span id="sptips"></span>)
+						<!--<div style="float: right;margin-top: -3px;margin-left: 3px;" graph_call="email_delivery_fee">
+							<a href="#" data-toggle="modal" data-target="#csvModal" style="text-decoration-line: none;">
+								<span class="mrp-icon" style="border-radius: 5px 5px 5px 5px;font-size: 11px;font-weight: bold;">CSV</span>	
+							</a>
+						</div>-->
+						<!--DateRange-->
+						<div style="float:right;margin-top:-2px">
+							<div style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%;display: inline;" graph="#tips" graph_call="set_tips" class="reportrange">
+								<i class="fa fa-calendar"></i>&nbsp;
+								<span></span>
+							</div>				
+						</div>
+					</div>
+					<div class="chart-stage" id="tips"></div>
+					<div class="chart-notes">Description.</div>
 				</div>
 			</div>
 			<div class="col-sm-12 col-md-12">
@@ -381,6 +448,9 @@ if(isset($_COOKIE['name']))
 	<script type="text/javascript" src="cdn.php?file=admin"></script>  
 	<script type="text/javascript" src="cdn.php?file=dashboard"></script>   	
 	<script type="text/javascript" src="cdn.php?file=email"></script>   	
-	<script type="text/javascript" src="js/site.js"></script>  	
+	<script type="text/javascript" src="js/site.js"></script>
+	<!--jQuery Multi-Select-->
+	<script type="text/javascript" src="cdn.php?file=multiselect_js"></script>
+	<script type="text/javascript" src="cdn.php?file=multiselect_init_js"></script>
 </body>
 </html>
