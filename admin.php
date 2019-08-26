@@ -29,7 +29,9 @@ if(isset($_COOKIE['name']))
 		<!--Bootstrap-->
 		<link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.min.css"/>
 		<!--Date Range Picker-->
-		<link rel="stylesheet" type="text/css" href="daterangepicker/daterangepicker.css"/>        
+		<link rel="stylesheet" type="text/css" href="daterangepicker/daterangepicker.css"/>
+		<!-- jQuery Multi-Select-->
+		<link rel="stylesheet" type="text/css" href="css/jquery.multiselect.css"/>
 	</head>
 <body class="keen-dashboard" style="padding-top: 0px;">
 	<nav id="dvnavhorizontal" class="navbar navbar-default navbar-fixed-top" style="display: none;background-color: #4651FF;border-color: #4651FF;">
@@ -109,6 +111,18 @@ if(isset($_COOKIE['name']))
 	</nav>
 	<div id="dvbodygraph">
 		<div class="row">
+			<div class="col-lg-12">
+				<div class="">       
+					<select name="langOpt[]" multiple id="langOpt">
+						<option value="226">Greenpoint</option>			
+						<option value="227">Greenwood</option>			
+						<option value="229">Lenox Square</option>			
+						<option value="213">Williamsburg</option>			
+						<option value="228">Worth Street</option>			
+					</select>                 
+				</div>
+			</div>
+			
 			<div class="col-sm-12 col-md-12">
 				<div class="chart-wrapper">
 					<div class="chart-title">
@@ -434,6 +448,9 @@ if(isset($_COOKIE['name']))
 	<script type="text/javascript" src="cdn.php?file=admin"></script>  
 	<script type="text/javascript" src="cdn.php?file=dashboard"></script>   	
 	<script type="text/javascript" src="cdn.php?file=email"></script>   	
-	<script type="text/javascript" src="js/site.js"></script>  		
+	<script type="text/javascript" src="js/site.js"></script>
+	<!--jQuery Multi-Select-->
+	<script src="js/jquery.multiselect.js"></script>
+	<script src="js/jquery.multiselect.init.js"></script>
 </body>
 </html>
