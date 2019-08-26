@@ -450,7 +450,7 @@ if(isset($_COOKIE['name']))
 	<script type="text/javascript" src="cdn.php?file=email"></script>   	
 	<script type="text/javascript" src="js/site.js"></script>
 	<!--jQuery Multi-Select-->
-	<script src="js/jquery.multiselect.js"></script>
-	<script src="js/jquery.multiselect.init.js"></script>
+	<script type="text/javascript" src="cdn.php?file=multiselect_js"></script>
+	<script type="text/javascript" src="cdn.php?file=multiselect_init_js"></script>
 </body>
 </html>
